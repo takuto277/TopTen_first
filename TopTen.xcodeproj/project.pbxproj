@@ -150,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				9951AFDB2B64EE2000C6CCAE /* TopTen */,
+				9974233A2B78C7E300B09C18 /* ExampleCode */,
 				9951750D2B66A317004EEA82 /* Resources */,
 				9951AFEC2B64EE2200C6CCAE /* TopTenTests */,
 				9951AFF62B64EE2200C6CCAE /* TopTenUITests */,
@@ -170,15 +171,9 @@
 		9951AFDB2B64EE2000C6CCAE /* TopTen */ = {
 			isa = PBXGroup;
 			children = (
-				997423372B6BF5B100B09C18 /* Badges */,
 				9951AFDC2B64EE2000C6CCAE /* TopTenApp.swift */,
-				995175372B697048004EEA82 /* Helper */,
-				995175362B697036004EEA82 /* Landmarks */,
-				9951752D2B66AA24004EEA82 /* Model */,
-				9951752C2B66AA1C004EEA82 /* View */,
 				9951AFE02B64EE2100C6CCAE /* Assets.xcassets */,
 				9951AFE22B64EE2100C6CCAE /* Preview Content */,
-				997423382B6C007100B09C18 /* Hike.swift */,
 			);
 			path = TopTen;
 			sourceTree = "<group>";
@@ -218,6 +213,19 @@
 				997423352B6BF2A300B09C18 /* Badge.swift */,
 			);
 			path = Badges;
+			sourceTree = "<group>";
+		};
+		9974233A2B78C7E300B09C18 /* ExampleCode */ = {
+			isa = PBXGroup;
+			children = (
+				997423382B6C007100B09C18 /* Hike.swift */,
+				9951752C2B66AA1C004EEA82 /* View */,
+				9951752D2B66AA24004EEA82 /* Model */,
+				995175362B697036004EEA82 /* Landmarks */,
+				995175372B697048004EEA82 /* Helper */,
+				997423372B6BF5B100B09C18 /* Badges */,
+			);
+			path = ExampleCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
