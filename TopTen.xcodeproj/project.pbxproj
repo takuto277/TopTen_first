@@ -14,6 +14,7 @@
 		9951AFF82B64EE2200C6CCAE /* TopTenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFF72B64EE2200C6CCAE /* TopTenUITests.swift */; };
 		9951AFFA2B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */; };
 		9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9974233B2B78D3ED00B09C18 /* HomeView.swift */; };
+		9974239D2B7A0CF900B09C18 /* Selima .otf in Resources */ = {isa = PBXBuildFile; fileRef = 9974239C2B7A0CF900B09C18 /* Selima .otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		9951AFF72B64EE2200C6CCAE /* TopTenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenUITests.swift; sourceTree = "<group>"; };
 		9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9974233B2B78D3ED00B09C18 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9974239C2B7A0CF900B09C18 /* Selima .otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Selima .otf"; sourceTree = "<group>"; };
+		9974239F2B7A106100B09C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 		9951AFDB2B64EE2000C6CCAE /* TopTen */ = {
 			isa = PBXGroup;
 			children = (
+				9974239F2B7A106100B09C18 /* Info.plist */,
+				9974239E2B7A0D0100B09C18 /* Resource */,
 				9951AFDC2B64EE2000C6CCAE /* TopTenApp.swift */,
 				9951AFE02B64EE2100C6CCAE /* Assets.xcassets */,
 				9951AFE22B64EE2100C6CCAE /* Preview Content */,
@@ -125,6 +130,14 @@
 				9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */,
 			);
 			path = TopTenUITests;
+			sourceTree = "<group>";
+		};
+		9974239E2B7A0D0100B09C18 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				9974239C2B7A0CF900B09C18 /* Selima .otf */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9974239D2B7A0CF900B09C18 /* Selima .otf in Resources */,
 				9951AFE42B64EE2100C6CCAE /* Preview Assets.xcassets in Resources */,
 				9951AFE12B64EE2100C6CCAE /* Assets.xcassets in Resources */,
 			);
@@ -424,6 +438,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TopTen/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TopTen/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -452,6 +467,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TopTen/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TopTen/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
