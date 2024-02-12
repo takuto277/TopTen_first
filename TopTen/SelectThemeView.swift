@@ -45,7 +45,7 @@ struct SelectThemeView: View {
                             .font(.custom("STBaoliTC-Regular", size: 15))
                             .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
                     }
-                    .buttonStyle(MyButtonStyle())
+                    .buttonStyle(BackButtonStyle())
                 }
                 .overlay(
                     Group {

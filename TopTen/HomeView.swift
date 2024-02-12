@@ -55,3 +55,13 @@ struct MyButtonStyle: ButtonStyle {
             .cornerRadius(10)
     }
 }
+
+struct BackButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(Color.gray)
+            .foregroundColor(configuration.isPressed ? Color.white : Color.blue)
+            .cornerRadius(10)
+    }
+}
