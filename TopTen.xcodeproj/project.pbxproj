@@ -15,6 +15,9 @@
 		9951AFFA2B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */; };
 		9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9974233B2B78D3ED00B09C18 /* HomeView.swift */; };
 		9974239D2B7A0CF900B09C18 /* Selima .otf in Resources */ = {isa = PBXBuildFile; fileRef = 9974239C2B7A0CF900B09C18 /* Selima .otf */; };
+		997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A02B7A1A2300B09C18 /* SelectThemeView.swift */; };
+		997423A32B7A75E400B09C18 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A22B7A75E400B09C18 /* PopupView.swift */; };
+		997423A52B7A76B600B09C18 /* HelpTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A42B7A76B600B09C18 /* HelpTopic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		9974233B2B78D3ED00B09C18 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9974239C2B7A0CF900B09C18 /* Selima .otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Selima .otf"; sourceTree = "<group>"; };
 		9974239F2B7A106100B09C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		997423A02B7A1A2300B09C18 /* SelectThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectThemeView.swift; sourceTree = "<group>"; };
+		997423A22B7A75E400B09C18 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		997423A42B7A76B600B09C18 /* HelpTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTopic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,15 @@
 		9951AFDB2B64EE2000C6CCAE /* TopTen */ = {
 			isa = PBXGroup;
 			children = (
+				997423A62B7A76CB00B09C18 /* Enum */,
 				9974239F2B7A106100B09C18 /* Info.plist */,
 				9974239E2B7A0D0100B09C18 /* Resource */,
 				9951AFDC2B64EE2000C6CCAE /* TopTenApp.swift */,
 				9951AFE02B64EE2100C6CCAE /* Assets.xcassets */,
 				9951AFE22B64EE2100C6CCAE /* Preview Content */,
 				9974233B2B78D3ED00B09C18 /* HomeView.swift */,
+				997423A02B7A1A2300B09C18 /* SelectThemeView.swift */,
+				997423A22B7A75E400B09C18 /* PopupView.swift */,
 			);
 			path = TopTen;
 			sourceTree = "<group>";
@@ -138,6 +147,14 @@
 				9974239C2B7A0CF900B09C18 /* Selima .otf */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		997423A62B7A76CB00B09C18 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				997423A42B7A76B600B09C18 /* HelpTopic.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +289,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9951AFDD2B64EE2000C6CCAE /* TopTenApp.swift in Sources */,
+				997423A32B7A75E400B09C18 /* PopupView.swift in Sources */,
+				997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */,
 				9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */,
+				997423A52B7A76B600B09C18 /* HelpTopic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
