@@ -11,46 +11,54 @@ struct SelectThemeView: View {
     @State private var isShowingPopup = false
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("お題を選んでください")
-                Spacer()
-                Button {
-                    self.isShowingPopup = true
-                } label: {
-                    Image(systemName: "questionmark.circle")
-                        .foregroundColor(.blue)
-                        .clipShape(Circle())
+        GeometryReader { geometry in
+            NavigationView {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Text("お題を選んでください")
+                        Spacer()
+                        Button {
+                            self.isShowingPopup = true
+                        } label: {
+                            Image(systemName: "questionmark.circle")
+                                .foregroundColor(.blue)
+                                .clipShape(Circle())
+                        }
+                        
+                    }
+                    .padding()
+                    List {
+                        ForEach(0..<30) { index in
+                            NavigationLink {
+                                AsignNumberAnswerView()
+                                    .navigationBarBackButtonHidden(true)
+                            } label: {
+                                Text("aaaaaaaaaaaaaaaaaaaasasasasasaaasfsfasdasdasdaafddfbafdbdfvdfvdfbdfb")
+                            }
+                        }
+                    }
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("戻る")
+                            .font(.custom("STBaoliTC-Regular", size: 15))
+                            .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
+                    }
+                    .buttonStyle(MyButtonStyle())
                 }
-                
-            }
-            .padding()
-            
-            List {
-                ForEach(0..<30) { index in
-                    Text("Row \(index)")
-                }
-            }
-            VStack {
-                Button("戻る") {
-                    dismiss()
-                }
-                
+                .overlay(
+                    Group {
+                        if isShowingPopup {
+                            PopupView(isShowingPopup: self.$isShowingPopup, topic: .selectTheme)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color.black.opacity(0.5))
+                                .edgesIgnoringSafeArea(.all)
+                        }
+                    })
             }
         }
-        .overlay(
-            Group {
-                if isShowingPopup {
-                    PopupView(isShowingPopup: self.$isShowingPopup, topic: .selectTheme)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.black.opacity(0.5))
-                        .edgesIgnoringSafeArea(.all)
-                }
-            })
     }
-
-    
 }
 
 #Preview {

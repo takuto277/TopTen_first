@@ -18,6 +18,7 @@
 		997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A02B7A1A2300B09C18 /* SelectThemeView.swift */; };
 		997423A32B7A75E400B09C18 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A22B7A75E400B09C18 /* PopupView.swift */; };
 		997423A52B7A76B600B09C18 /* HelpTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A42B7A76B600B09C18 /* HelpTopic.swift */; };
+		997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		997423A02B7A1A2300B09C18 /* SelectThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectThemeView.swift; sourceTree = "<group>"; };
 		997423A22B7A75E400B09C18 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		997423A42B7A76B600B09C18 /* HelpTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTopic.swift; sourceTree = "<group>"; };
+		997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsignNumberAnswerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				9974233B2B78D3ED00B09C18 /* HomeView.swift */,
 				997423A02B7A1A2300B09C18 /* SelectThemeView.swift */,
 				997423A22B7A75E400B09C18 /* PopupView.swift */,
+				997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */,
 			);
 			path = TopTen;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			files = (
 				9951AFDD2B64EE2000C6CCAE /* TopTenApp.swift in Sources */,
 				997423A32B7A75E400B09C18 /* PopupView.swift in Sources */,
+				997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */,
 				997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */,
 				9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */,
 				997423A52B7A76B600B09C18 /* HelpTopic.swift in Sources */,
