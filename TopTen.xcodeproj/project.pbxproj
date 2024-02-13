@@ -19,6 +19,8 @@
 		997423A32B7A75E400B09C18 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A22B7A75E400B09C18 /* PopupView.swift */; };
 		997423A52B7A76B600B09C18 /* HelpTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A42B7A76B600B09C18 /* HelpTopic.swift */; };
 		997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */; };
+		997423AA2B7BA4FB00B09C18 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A92B7BA4FB00B09C18 /* GameView.swift */; };
+		997423AC2B7BAC7C00B09C18 /* NumberPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		997423A22B7A75E400B09C18 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		997423A42B7A76B600B09C18 /* HelpTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTopic.swift; sourceTree = "<group>"; };
 		997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsignNumberAnswerView.swift; sourceTree = "<group>"; };
+		997423A92B7BA4FB00B09C18 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPopupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				997423A02B7A1A2300B09C18 /* SelectThemeView.swift */,
 				997423A22B7A75E400B09C18 /* PopupView.swift */,
 				997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */,
+				997423A92B7BA4FB00B09C18 /* GameView.swift */,
+				997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */,
 			);
 			path = TopTen;
 			sourceTree = "<group>";
@@ -291,12 +297,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997423AC2B7BAC7C00B09C18 /* NumberPopupView.swift in Sources */,
 				9951AFDD2B64EE2000C6CCAE /* TopTenApp.swift in Sources */,
 				997423A32B7A75E400B09C18 /* PopupView.swift in Sources */,
 				997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */,
 				997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */,
 				9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */,
 				997423A52B7A76B600B09C18 /* HelpTopic.swift in Sources */,
+				997423AA2B7BA4FB00B09C18 /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
