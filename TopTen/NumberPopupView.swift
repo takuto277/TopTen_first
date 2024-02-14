@@ -15,18 +15,18 @@ struct NumberPopupView: View {
         GeometryReader { geometry in
             VStack {
                 HStack {
-                    ForEach(0..<4) { index in
+                    ForEach(1..<5) { index in
                         Button {
                             self.isShowingPopup = false
                             
                             switch self.selectedButtonIndex {
-                            case 0:
-                                self.data.answers.answer1 = "\(index)"
                             case 1:
-                                self.data.answers.answer2 = "\(index)"
+                                self.data.answers.answer1 = "\(index)"
                             case 2:
-                                self.data.answers.answer3 = "\(index)"
+                                self.data.answers.answer2 = "\(index)"
                             case 3:
+                                self.data.answers.answer3 = "\(index)"
+                            case 4:
                                 self.data.answers.answer4 = "\(index)"
                             default:
                                 break
@@ -78,6 +78,12 @@ struct ContentView_Previews: PreviewProvider {
                 answer2: "Answer 2",
                 answer3: "Answer 3",
                 answer4: "Answer 4"
+            ),
+            correctNumbers: correctNumbers(
+                correctNumber1: "1",
+                correctNumber2: "2",
+                correctNumber3: "3",
+                correctNumber4: "4"
             )
         )
 

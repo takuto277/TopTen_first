@@ -9,15 +9,16 @@ import SwiftUI
 
 struct GameView: View {
     @State private var isShowingPopup = false
-    @State private var data = answerData(sentences: sentences(), answers: answers())
+    @State private var data = answerData(sentences: sentences(), answers: answers(), correctNumbers: correctNumbers())
     @State private var selectedButtonIndex: Int?
+    @State private var pushDecideButton = false
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 Text("hkjofgkofgjifdjgiodfnjdfnfdojdfiojdfijdfoibjdfoibdnfbodfnbi")
                     .padding()
                 
-                ForEach(0..<4) { index in
+                ForEach(1..<5) { index in
                     HStack {
                         Spacer()
                         
@@ -33,24 +34,60 @@ struct GameView: View {
                                 .font(.custom("STBaoliTC-Regular", size: 50))
                                 .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
                                 .border(Color.black, width: 3)
-                                .foregroundColor(Color(red: 1.0 - (Double(data.answerForButton(index)) ?? 0) / 4.0, green: (Double(data.answerForButton(index)) ?? 0) / 4.0, blue: 0))
+                                .foregroundColor(Color(red: 1.0 - (Double(data.answerForButton(index)) ?? 0) / 5.0, green: (Double(data.answerForButton(index)) ?? 0) / 5.0, blue: 0))
                                 .cornerRadius(6)
                         }
+                        .overlay{
+                            if self.pushDecideButton {
+                                Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
+                                    .font(.custom("STBaoliTC-Regular", size: 90))
+                                    .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
+                            }
+                        }
+                        
+                        if self.pushDecideButton {
+                            Text(data.correctNumberForButton(index))
+                                .font(.custom("STBaoliTC-Regular", size: 50))
+                                .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
+                        }
+                        
                         Spacer()
                     }
                 }
                 .padding()
                 
-                Spacer()
-                
-                Button {
-                    
-                } label: {
-                    Text("決定")
-                        .font(.custom("STBaoliTC-Regular", size: 15))
-                        .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
+                if self.pushDecideButton {
+                    HStack {
+                        let totalPoint = data.countCorrectAnswers()
+                        Text(String(totalPoint))
+                            .font(.custom("STBaoliTC-Regular", size: 50))
+                            .foregroundColor(Color(red: 1.0 - (Double(totalPoint) ) / 5.0, green: (Double(totalPoint) ) / 5.0, blue: 0))
+                        Text("/4点")
+                            .font(.custom("STBaoliTC-Regular", size: 50))
+                            .foregroundColor(.green)
+                    }
                 }
-                .buttonStyle(MyButtonStyle())
+                
+                Spacer()
+                if self.pushDecideButton {
+                    Button {
+                        self.pushDecideButton = true
+                    } label: {
+                        Text("次へ→")
+                            .font(.custom("STBaoliTC-Regular", size: 15))
+                            .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
+                    }
+                    .buttonStyle(NextButtonStyle())
+                } else {
+                    Button {
+                        self.pushDecideButton = true
+                    } label: {
+                        Text("決定")
+                            .font(.custom("STBaoliTC-Regular", size: 15))
+                            .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
+                    }
+                    .buttonStyle(MyButtonStyle())
+                }
                 
             }
             .overlay(
@@ -74,17 +111,58 @@ struct answerData {
     var theme: String = ""
     var sentences: sentences
     var answers: answers
+    var correctNumbers: correctNumbers
+    
+    mutating func judgeCorrectness(_ index: Int) -> Correctness {
+        let selectedAnswer = answerForButton(index)
+        let correctNumber = correctNumberForButton(index)
+        if selectedAnswer == correctNumber {
+            return .correct
+        } else {
+            return .incorrect
+        }
+    }
+    
+    func countCorrectAnswers() -> Int {
+           var correctCount = 0
+           
+           for i in 1..<5 {
+               let selectedAnswer = answerForButton(i)
+               let correctNumber = correctNumberForButton(i)
+               
+               if selectedAnswer == correctNumber {
+                   correctCount += 1
+               }
+           }
+           
+           return correctCount
+       }
     
     func answerForButton(_ index: Int) -> String {
         switch index {
-        case 0:
-            return answers.answer1
         case 1:
-            return answers.answer2
+            return answers.answer1
         case 2:
-            return answers.answer3
+            return answers.answer2
         case 3:
+            return answers.answer3
+        case 4:
             return answers.answer4
+        default:
+            return ""
+        }
+    }
+    
+    func correctNumberForButton(_ index: Int) -> String {
+        switch index {
+        case 1:
+            return correctNumbers.correctNumber1
+        case 2:
+            return correctNumbers.correctNumber2
+        case 3:
+            return correctNumbers.correctNumber3
+        case 4:
+            return correctNumbers.correctNumber4
         default:
             return ""
         }
@@ -103,4 +181,16 @@ struct answers {
     var answer2: String = ""
     var answer3: String = ""
     var answer4: String = ""
+}
+
+struct correctNumbers {
+    var correctNumber1: String = "1"
+    var correctNumber2: String = "2"
+    var correctNumber3: String = "3"
+    var correctNumber4: String = "4"
+}
+
+enum Correctness {
+    case correct
+    case incorrect
 }
