@@ -38,11 +38,15 @@ struct GameView: View {
                                 .cornerRadius(6)
                         }
                         .overlay{
-                            if self.pushDecideButton {
-                                Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
-                                    .font(.custom("STBaoliTC-Regular", size: 90))
-                                    .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
-                            }
+                            Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
+                                .font(.custom("STBaoliTC-Regular", size: 90))
+                                .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
+                                .opacity(self.pushDecideButton ? 1 : 0)
+                                .offset(y: self.pushDecideButton ?  0 :  -20)
+                                .offset(x: self.pushDecideButton ? 0 : -35 )
+                                .animation(
+                                    Animation.spring(duration: TimeInterval(1))
+                                        .delay(Double(index - 1) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
                         }
                         
                         if self.pushDecideButton {
@@ -71,7 +75,7 @@ struct GameView: View {
                 Spacer()
                 if self.pushDecideButton {
                     Button {
-                        self.pushDecideButton = true
+                        self.pushDecideButton = false
                     } label: {
                         Text("次へ→")
                             .font(.custom("STBaoliTC-Regular", size: 15))
@@ -80,7 +84,7 @@ struct GameView: View {
                     .buttonStyle(NextButtonStyle())
                 } else {
                     Button {
-                        self.pushDecideButton = true
+                            self.pushDecideButton = true
                     } label: {
                         Text("決定")
                             .font(.custom("STBaoliTC-Regular", size: 15))
