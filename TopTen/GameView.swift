@@ -17,15 +17,40 @@ struct GameView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                Text("hkjofgkofgjifdjgiodfnjdfnfdojdfiojdfijdfoibjdfoibdnfbodfnbi")
-                    .padding()
+            VStack (spacing: 20){
+                Group {
+                    if !self.animationFinished {
+                        Text("4つの言葉を比較して、\n小さい方から当てはまるものに番号を付けよう!")
+                            .padding()
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.center)
+                            .background(Color.yellow.opacity(0.3))
+                            .cornerRadius(10)
+                    }
+                    
+                    Text("お題")
+                        .foregroundColor(.black)
+                        .font(.headline)
+                        .padding(.horizontal, 10)
+                    Text("恋人にクリスマスプレゼントをもらう。もらっても嬉しくない。もらったら嬉しい。")
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 10)
+                }
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
                 
                 ForEach(1..<5) { index in
                     HStack {
                         Spacer()
                         
                         Text("No,\(index)gjdgifdjgdijgdifjgdfigjdfigjdfigbdfd")
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 10)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
                         
                         Spacer()
                         
