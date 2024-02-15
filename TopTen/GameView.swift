@@ -59,16 +59,16 @@ struct GameView: View {
                                 .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
                                 .opacity(self.showCorrectNumber ? 1 : 0) // Apply opacity based on a state variable
                                 .animation(.easeInOut, value: self.showCorrectNumber) // Add animation
-                                        
-                                        // Use DispatchQueue to delay the appearance
-                                        .onAppear {
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                                                withAnimation {
-                                                    self.showCorrectNumber = true
-                                                    self.animationFinished = true
-                                                }
-                                            }
+                            
+                            // Use DispatchQueue to delay the appearance
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                                        withAnimation {
+                                            self.showCorrectNumber = true
+                                            self.animationFinished = true
                                         }
+                                    }
+                                }
                         }
                         
                         Spacer()
@@ -92,8 +92,10 @@ struct GameView: View {
                 
                 Spacer()
                 if self.pushDecideButton && self.animationFinished {
-                    Button {
-                        self.pushDecideButton = false
+                    
+                    NavigationLink {
+                        FeedbackView()
+                            .navigationBarBackButtonHidden(true)
                     } label: {
                         Text("次へ→")
                             .font(.custom("STBaoliTC-Regular", size: 15))
@@ -102,7 +104,7 @@ struct GameView: View {
                     .buttonStyle(NextButtonStyle())
                 } else if !self.pushDecideButton {
                     Button {
-                            self.pushDecideButton = true
+                        self.pushDecideButton = true
                     } label: {
                         Text("決定")
                             .font(.custom("STBaoliTC-Regular", size: 15))
@@ -112,6 +114,7 @@ struct GameView: View {
                 }
                 
             }
+            .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
             .overlay(
                 Group {
                     if isShowingPopup {
@@ -146,19 +149,19 @@ struct answerData {
     }
     
     func countCorrectAnswers() -> Int {
-           var correctCount = 0
-           
-           for i in 1..<5 {
-               let selectedAnswer = answerForButton(i)
-               let correctNumber = correctNumberForButton(i)
-               
-               if selectedAnswer == correctNumber {
-                   correctCount += 1
-               }
-           }
-           
-           return correctCount
-       }
+        var correctCount = 0
+        
+        for i in 1..<5 {
+            let selectedAnswer = answerForButton(i)
+            let correctNumber = correctNumberForButton(i)
+            
+            if selectedAnswer == correctNumber {
+                correctCount += 1
+            }
+        }
+        
+        return correctCount
+    }
     
     func answerForButton(_ index: Int) -> String {
         switch index {
