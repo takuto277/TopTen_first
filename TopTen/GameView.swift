@@ -12,6 +12,9 @@ struct GameView: View {
     @State private var data = answerData(sentences: sentences(), answers: answers(), correctNumbers: correctNumbers())
     @State private var selectedButtonIndex: Int?
     @State private var pushDecideButton = false
+    @State private var showCorrectNumber = false
+    @State private var animationFinished = false
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -37,13 +40,14 @@ struct GameView: View {
                                 .foregroundColor(Color(red: 1.0 - (Double(data.answerForButton(index)) ?? 0) / 5.0, green: (Double(data.answerForButton(index)) ?? 0) / 5.0, blue: 0))
                                 .cornerRadius(6)
                         }
+                        .disabled(self.pushDecideButton)
                         .overlay{
                             Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
                                 .font(.custom("STBaoliTC-Regular", size: 90))
                                 .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
                                 .opacity(self.pushDecideButton ? 1 : 0)
                                 .offset(y: self.pushDecideButton ?  0 :  -20)
-                                .offset(x: self.pushDecideButton ? 0 : -35 )
+                                .offset(x: self.pushDecideButton ? 0 : -25 )
                                 .animation(
                                     Animation.spring(duration: TimeInterval(1))
                                         .delay(Double(index - 1) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
@@ -53,6 +57,18 @@ struct GameView: View {
                             Text(data.correctNumberForButton(index))
                                 .font(.custom("STBaoliTC-Regular", size: 50))
                                 .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
+                                .opacity(self.showCorrectNumber ? 1 : 0) // Apply opacity based on a state variable
+                                .animation(.easeInOut, value: self.showCorrectNumber) // Add animation
+                                        
+                                        // Use DispatchQueue to delay the appearance
+                                        .onAppear {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                                                withAnimation {
+                                                    self.showCorrectNumber = true
+                                                    self.animationFinished = true
+                                                }
+                                            }
+                                        }
                         }
                         
                         Spacer()
@@ -66,6 +82,8 @@ struct GameView: View {
                         Text(String(totalPoint))
                             .font(.custom("STBaoliTC-Regular", size: 50))
                             .foregroundColor(Color(red: 1.0 - (Double(totalPoint) ) / 5.0, green: (Double(totalPoint) ) / 5.0, blue: 0))
+                            .opacity(self.showCorrectNumber ? 1 : 0)
+                            .scaleEffect(self.showCorrectNumber ? 1 : 6)
                         Text("/4点")
                             .font(.custom("STBaoliTC-Regular", size: 50))
                             .foregroundColor(.green)
@@ -73,7 +91,7 @@ struct GameView: View {
                 }
                 
                 Spacer()
-                if self.pushDecideButton {
+                if self.pushDecideButton && self.animationFinished {
                     Button {
                         self.pushDecideButton = false
                     } label: {
@@ -82,7 +100,7 @@ struct GameView: View {
                             .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
                     }
                     .buttonStyle(NextButtonStyle())
-                } else {
+                } else if !self.pushDecideButton {
                     Button {
                             self.pushDecideButton = true
                     } label: {
