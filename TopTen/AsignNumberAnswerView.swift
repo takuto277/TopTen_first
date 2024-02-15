@@ -15,9 +15,29 @@ struct AsignNumberAnswerView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            VStack (spacing: 20){
+                        Text("お題と番号に沿った文章を作成してみよう！")
+                            .padding()
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.center)
+                            .background(Color.yellow.opacity(0.3))
+                            .cornerRadius(10)
                 HStack {
-                    Text("hogegfdigjerigejiogjeirojoerigjerojoijeigjeieijgeoirjgei")
+                    VStack(alignment: .leading, spacing: 10) {
+                        Group {
+                            Text("お題")
+                                .foregroundColor(.black)
+                                .font(.headline)
+                                .padding(.horizontal, 10)
+                            Text("恋人にクリスマスプレゼントをもらう。もらっても嬉しくない。もらったら嬉しい。")
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 10)
+                        }
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                    }
                     
                     Spacer()
                     
@@ -67,7 +87,7 @@ struct AsignNumberAnswerView: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                         .overlay(
-                            Text("お題と番号に沿った文章を入力してください。\n例: \n[問い]お題「学校の七不思議にありそうなこと」 10番の場合 \n[入力]トイレの花子さん")
+                            Text("例: \n[お題]「学校の七不思議にありそうなこと」 \n[順番]10番 \n[入力]トイレの花子さん")
                                 .font(.custom("STBaoliTC-Regular", size: 15))
                                 .foregroundColor(.gray)
                                 .padding(.horizontal)
@@ -100,6 +120,7 @@ struct AsignNumberAnswerView: View {
                 
                 Spacer()
             }
+            .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
         }
     }
 }

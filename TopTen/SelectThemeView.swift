@@ -15,7 +15,14 @@ struct SelectThemeView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("お題を選んでください")
+                    Text("遊びたいお題を選ぼう！")
+                        .padding()
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.center)
+                        .background(Color.yellow.opacity(0.3))
+                        .cornerRadius(10)
+                    
                     Spacer()
                     Button {
                         self.isShowingPopup = true
@@ -34,6 +41,7 @@ struct SelectThemeView: View {
                                 .navigationBarBackButtonHidden(true)
                         } label: {
                             Text("aaaaaaaaaaaaaaaaaaaasasasasasaaasfsfasdasdasdaafddfbafdbdfvdfvdfbdfb")
+                            
                         }
                     }
                 }
