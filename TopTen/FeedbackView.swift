@@ -19,45 +19,36 @@ struct FeedbackView: View {
                 VStack {
                     Text("ゲームを遊んでくれてありがとう！\n今回の回答理由があれば教えてね")
                         .padding()
-                    VStack{
-                        HStack {
+                        .border(.black)
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading) {
                             Text("お題")
-                            Spacer()
-                            
-                            
-                            
-                        }
-                        .padding()
-                        HStack {
-                        //    Spacer()
+                                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.05)
+                                .border(.black, width: 1)
                             Text("恋人にクリスマスプレゼントをもらう。もらっても嬉しくない。もらったら嬉しい。")
-                                .padding()
-                            Spacer()
-                            
+                                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.1)
+                                .border(.black, width: 1)
                         }
-                    }
-                    VStack{
-                        HStack {
-                            
-                            Text("回答内容")
-                            Spacer()
-                        }
-                        .padding()
                         
-                        HStack {
-                         
-                            Text("彼氏が高校生の頃から貯金して貯めたお金で買った財布")
-                                .padding()
-                            Spacer()
-                            Text(String(randomNumber))
-                                .font(.custom("STBaoliTC-Regular", size: 50))
-                                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
-                                .border(Color.black, width: 3)
-                                .background(Color(red: 1.0 - Double(randomNumber) / 10.0, green: Double(randomNumber) / 10.0, blue: 0))
-                                .cornerRadius(6)
-                                .padding()
+                        VStack(alignment: .leading) {
+                            Text("回答内容")
+                                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.05)
+                                .border(.black, width: 1)
+                            
+                            HStack {
+                                Text("彼氏が高校生の頃から貯金して貯めたお金で買った財布")
+                                    .frame(width: geometry.size.width * 0.7, height: geometry.size.height * 0.1)
+                                    .border(.black, width: 1)
+                                Text(String(randomNumber))
+                                    .font(.custom("STBaoliTC-Regular", size: 50))
+                                    .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
+                                    .border(Color.black, width: 3)
+                                    .background(Color(red: 1.0 - Double(randomNumber) / 10.0, green: Double(randomNumber) / 10.0, blue: 0))
+                                    .cornerRadius(6)
+                            }
                         }
                     }
+                    .padding()
                     
                     VStack {
                         
@@ -79,20 +70,13 @@ struct FeedbackView: View {
                                     .opacity(text.isEmpty ? 1 : 0) // テキストが空でない場合は非表示にする
                             )
                         HStack {
-                            Button {
-                                dismiss()
-                            } label: {
-                                Text("戻る")
-                                    .font(.custom("STBaoliTC-Regular", size: 15))
-                                    .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
-                            }
-                            .buttonStyle(BackButtonStyle())
+
                             
                             NavigationLink {
                                 GameView()
                                     .navigationBarBackButtonHidden(true)
                             } label: {
-                                Text("決定")
+                                Text("次へ")
                                     .font(.custom("STBaoliTC-Regular", size: 15))
                                     .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
                             }
