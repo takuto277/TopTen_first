@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var isButtonVisible = true
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -19,6 +20,7 @@ struct HomeView: View {
                         .padding()
                         .font(.custom("AcademyEngravedLetPlain", size: 40))
                         .foregroundColor(.blue)
+                        
                     
                     Spacer(minLength:  geometry.size.height * 6/10)
                     
@@ -29,13 +31,23 @@ struct HomeView: View {
                             .padding()
                             .font(.custom("STBaoliTC-Regular", size: 30))
                             .frame(width: geometry.size.width * 0.7, height: geometry.size.height * 0.03)
+                            .opacity(isButtonVisible ? 1 : 0)
+                            .onAppear {
+                                withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                                    isButtonVisible.toggle()
+                                }
+                            }
                     }
                     .buttonStyle(MyButtonStyle())
+                    
 
                     Spacer(minLength:  geometry.size.height * 1/10)
                     
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            }
+            .onDisappear {
+                isButtonVisible = true
             }
         }
     }
