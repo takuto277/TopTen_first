@@ -21,6 +21,8 @@
 		997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */; };
 		997423AA2B7BA4FB00B09C18 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A92B7BA4FB00B09C18 /* GameView.swift */; };
 		997423AC2B7BAC7C00B09C18 /* NumberPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */; };
+		999E9B442B811B4B00072912 /* SelectThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B432B811B4B00072912 /* SelectThemeViewModel.swift */; };
+		999E9B462B81207300072912 /* ThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B452B81207300072912 /* ThemeData.swift */; };
 		99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E27D3F2B7E62A800B739AA /* FeedbackView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsignNumberAnswerView.swift; sourceTree = "<group>"; };
 		997423A92B7BA4FB00B09C18 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPopupView.swift; sourceTree = "<group>"; };
+		999E9B432B811B4B00072912 /* SelectThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectThemeViewModel.swift; sourceTree = "<group>"; };
+		999E9B452B81207300072912 /* ThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
 		99E27D3F2B7E62A800B739AA /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +173,7 @@
 		99E27D412B80549D00B739AA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				999E9B452B81207300072912 /* ThemeData.swift */,
 				997423A62B7A76CB00B09C18 /* Enum */,
 			);
 			path = Models;
@@ -190,6 +195,7 @@
 		99E27D432B8054E100B739AA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				999E9B432B811B4B00072912 /* SelectThemeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -348,8 +354,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				999E9B442B811B4B00072912 /* SelectThemeViewModel.swift in Sources */,
 				997423AC2B7BAC7C00B09C18 /* NumberPopupView.swift in Sources */,
 				9951AFDD2B64EE2000C6CCAE /* TopTenApp.swift in Sources */,
+				999E9B462B81207300072912 /* ThemeData.swift in Sources */,
 				99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */,
 				997423A32B7A75E400B09C18 /* PopupView.swift in Sources */,
 				997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */,

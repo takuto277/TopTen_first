@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct SelectThemeView: View {
+struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
+    @ObservedObject var viewModel: ViewModel
     @State private var isShowingPopup = false
     @Environment(\.dismiss) var dismiss
     var body: some View {

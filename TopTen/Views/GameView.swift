@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     @State private var isShowingPopup = false
-    @State private var data = answerData(sentences: sentences(), answers: answers(), correctNumbers: correctNumbers())
+    @State private var data = userAnswerData(sentences: sentences(), answers: answers(), correctNumbers: correctNumbers())
     @State private var selectedButtonIndex: Int?
     @State private var pushDecideButton = false
     @State private var showCorrectNumber = false
@@ -157,7 +157,7 @@ struct GameView: View {
     GameView()
 }
 
-struct answerData {
+struct userAnswerData {
     var theme: String = ""
     var sentences: sentences
     var answers: answers
