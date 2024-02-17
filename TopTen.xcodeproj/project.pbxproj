@@ -111,19 +111,16 @@
 		9951AFDB2B64EE2000C6CCAE /* TopTen */ = {
 			isa = PBXGroup;
 			children = (
-				997423A62B7A76CB00B09C18 /* Enum */,
-				9974239F2B7A106100B09C18 /* Info.plist */,
-				9974239E2B7A0D0100B09C18 /* Resource */,
 				9951AFDC2B64EE2000C6CCAE /* TopTenApp.swift */,
+				99E27D432B8054E100B739AA /* ViewModels */,
+				99E27D422B8054D900B739AA /* Views */,
+				99E27D412B80549D00B739AA /* Models */,
+				99E27D442B80581700B739AA /* Services */,
+				99E27D452B80583500B739AA /* Helpers */,
+				9974239E2B7A0D0100B09C18 /* Resource */,
+				9974239F2B7A106100B09C18 /* Info.plist */,
 				9951AFE02B64EE2100C6CCAE /* Assets.xcassets */,
 				9951AFE22B64EE2100C6CCAE /* Preview Content */,
-				9974233B2B78D3ED00B09C18 /* HomeView.swift */,
-				997423A02B7A1A2300B09C18 /* SelectThemeView.swift */,
-				997423A22B7A75E400B09C18 /* PopupView.swift */,
-				997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */,
-				997423A92B7BA4FB00B09C18 /* GameView.swift */,
-				997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */,
-				99E27D3F2B7E62A800B739AA /* FeedbackView.swift */,
 			);
 			path = TopTen;
 			sourceTree = "<group>";
@@ -167,6 +164,49 @@
 				997423A42B7A76B600B09C18 /* HelpTopic.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		99E27D412B80549D00B739AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				997423A62B7A76CB00B09C18 /* Enum */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		99E27D422B8054D900B739AA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9974233B2B78D3ED00B09C18 /* HomeView.swift */,
+				997423A02B7A1A2300B09C18 /* SelectThemeView.swift */,
+				997423A22B7A75E400B09C18 /* PopupView.swift */,
+				997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */,
+				997423A92B7BA4FB00B09C18 /* GameView.swift */,
+				997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */,
+				99E27D3F2B7E62A800B739AA /* FeedbackView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99E27D432B8054E100B739AA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		99E27D442B80581700B739AA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		99E27D452B80583500B739AA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
