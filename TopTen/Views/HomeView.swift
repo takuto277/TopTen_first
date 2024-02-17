@@ -44,7 +44,7 @@ struct HomeView: View {
                     Spacer(minLength:  geometry.size.height * 1/10)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-                .background(
+                .overlay(
                     Color.black.opacity(!animationFinished ? 1 : 0)
                         .edgesIgnoringSafeArea(.all)
                         .animation(
@@ -55,7 +55,7 @@ struct HomeView: View {
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // アニメーションのdurationに合わせて設定
                     self.animationFinished = true
-           //     }
+                }
             }
             .onDisappear {
                 isButtonVisible = true
