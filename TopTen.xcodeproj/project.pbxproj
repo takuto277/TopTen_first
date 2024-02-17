@@ -179,11 +179,10 @@
 			children = (
 				9974233B2B78D3ED00B09C18 /* HomeView.swift */,
 				997423A02B7A1A2300B09C18 /* SelectThemeView.swift */,
-				997423A22B7A75E400B09C18 /* PopupView.swift */,
 				997423A72B7A7C6300B09C18 /* AsignNumberAnswerView.swift */,
 				997423A92B7BA4FB00B09C18 /* GameView.swift */,
-				997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */,
 				99E27D3F2B7E62A800B739AA /* FeedbackView.swift */,
+				99E27D462B80595100B739AA /* Sub */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +206,15 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		99E27D462B80595100B739AA /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				997423A22B7A75E400B09C18 /* PopupView.swift */,
+				997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */,
+			);
+			path = Sub;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

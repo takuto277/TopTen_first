@@ -59,14 +59,22 @@ struct FeedbackView: View {
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
-                    
                     Group {
-                        TextEditor(text: $text)
-                            .padding()
-                            .frame(height: 150)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                        Group {
+                            TextEditor(text: $text)
+                                .padding()
+                                .frame(height: 150)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                        }
+                        .overlay(
+                            Text("今回の回答理由があれば記入をお願いします。\n他プレイヤーの出題回答に使用させていただきます。")
+                                .font(.custom("STBaoliTC-Regular", size: 15))
+                                .foregroundColor(.gray)
+                                .padding(.horizontal)
+                                .opacity(text.isEmpty ? 1 : 0) // テキストが空でない場合は非表示にする
+                        )
                         
                         Button {
                             presentationMode.wrappedValue.dismiss()
