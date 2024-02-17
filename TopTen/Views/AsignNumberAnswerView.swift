@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AsignNumberAnswerView: View {
-    let randomNumber = Int.random(in: 1...10)
+    @State private var randomNumber = Int.random(in: 1...10)
     @State private var text: String = ""
     @State private var isEditing = false
     @Environment(\.dismiss) var dismiss
