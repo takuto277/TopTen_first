@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var isButtonVisible = true
+    @State private var animationFinished = false
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -43,6 +44,18 @@ struct HomeView: View {
                     Spacer(minLength:  geometry.size.height * 1/10)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                .background(
+                    Color.black.opacity(!animationFinished ? 1 : 0)
+                        .edgesIgnoringSafeArea(.all)
+                        .animation(
+                            Animation.spring(duration: TimeInterval(3)),
+                            value: !animationFinished)
+                )
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // アニメーションのdurationに合わせて設定
+                    self.animationFinished = true
+           //     }
             }
             .onDisappear {
                 isButtonVisible = true

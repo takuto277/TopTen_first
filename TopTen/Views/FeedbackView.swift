@@ -11,7 +11,8 @@ struct FeedbackView: View {
     let randomNumber = Int.random(in: 1...10)
     @State private var text: String = ""
     @State private var isEditing = false
-    @Environment(\.presentationMode) var presentationMode
+    @State private var pushNextButton = false
+    @State private var animationFinished = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -77,7 +78,7 @@ struct FeedbackView: View {
                         )
                         
                         Button {
-                            presentationMode.wrappedValue.dismiss()
+                            self.pushNextButton = true
                         } label: {
                             Text("次へ")
                                 .font(.headline)
@@ -95,6 +96,24 @@ struct FeedbackView: View {
                 Spacer()
             }
             .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
+            .overlay {
+                Color.black
+                    .opacity(pushNextButton ? 1 : 0)
+                    .edgesIgnoringSafeArea(.all)
+                    .animation(
+                        Animation.spring(duration: TimeInterval(3)),
+                        value: self.pushNextButton)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { // アニメーションのdurationに合わせて設定
+                            self.animationFinished = true
+                        }
+                    }
+            }
+            
+            // HomeViewへ遷移
+            NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: self.$animationFinished) {
+                EmptyView()
+            }
         }
     }
 }
