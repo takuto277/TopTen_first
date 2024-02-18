@@ -11,6 +11,8 @@ struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
     @StateObject var viewModel: ViewModel
     @State private var text: String = ""
     @State private var navigationFlg = false
+    @State private var showingErrorAlert = false
+    @State private var showingConfirmAlert = false
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -102,8 +104,11 @@ struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
                                 .buttonStyle(BackButtonStyle())
                                 
                                 Button {
-                                    self.viewModel.setMyAnswer(answer: self.text)
-                                    self.navigationFlg = true
+                                    if self.text.isEmpty {
+                                        self.showingErrorAlert = true
+                                    } else {
+                                        self.showingConfirmAlert = true
+                                    }
                                     
                                 } label: {
                                     Text("決定")
@@ -128,6 +133,22 @@ struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
                 .navigationDestination(isPresented: self.$navigationFlg) {
                     GameView(viewModel: GameViewModel(themeData: self.viewModel.themeData))
                         .navigationBarBackButtonHidden(true)
+                }
+                .alert("注意", isPresented: $showingErrorAlert) {
+                    
+                } message: {
+                    Text("文章が空です。\n入力してください。")
+                }
+                .alert("確認", isPresented: $showingConfirmAlert) {
+                    Button("キャンセル") {
+                        self.showingConfirmAlert = false
+                    }
+                    Button("OK") {
+                        self.viewModel.setMyAnswer(answer: self.text)
+                        self.navigationFlg = true
+                    }
+                } message: {
+                    Text("入力された文章でよろしいですか？")
                 }
             }
         }
