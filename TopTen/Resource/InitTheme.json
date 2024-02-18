@@ -1,0 +1,52 @@
+[
+    {
+        "theme": {
+            "id": "1",
+            "theme": "誕生日プレゼントとしての貰い物",
+            "lowNumberTheme": "もらっても嬉しくないもの",
+            "highNumberTheme": "もらったら嬉しいもの"
+        },
+        "otherThemeAnswers": [
+            {
+                "id": "1",
+                "answer": "お皿",
+                "number": "5"
+            },
+            {
+                "id": "2",
+                "answer": "時計",
+                "number": "8"
+            },
+            {
+                "id": "3",
+                "answer": "鉛筆削り",
+                "number": "3"
+            }
+        ]
+    },
+    {
+        "theme": {
+            "id": "2",
+            "theme": "ゾンビの世界で生き残れる隠れ場所",
+            "lowNumberTheme": "生き残れない場所",
+            "highNumberTheme": "生き残れる場所"
+        },
+        "otherThemeAnswers": [
+            {
+                "id": "1",
+                "answer": "警察署",
+                "number": "7"
+            },
+            {
+                "id": "2",
+                "answer": "アンブレラ",
+                "number": "9"
+            },
+            {
+                "id": "3",
+                "answer": "学校",
+                "number": "2"
+            }
+        ]
+    }
+]

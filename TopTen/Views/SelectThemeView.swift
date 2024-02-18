@@ -36,12 +36,18 @@ struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
                 }
                 .padding()
                 List {
-                    ForEach(0..<30) { index in
+                    ForEach(viewModel.data, id: \.theme.id) { element in
                         NavigationLink {
                             AsignNumberAnswerView()
                                 .navigationBarBackButtonHidden(true)
                         } label: {
-                            Text("aaaaaaaaaaaaaaaaaaaasasasasasaaasfsfasdasdasdaafddfbafdbdfvdfvdfbdfb")
+                            VStack(alignment: .leading) {
+                                Text(element.theme.theme)
+                                Text(element.theme.lowNumberTheme)
+                                    .foregroundColor(.red)
+                                Text(element.theme.highNumberTheme)
+                                    .foregroundColor(.green)
+                            }
                             
                         }
                     }
@@ -64,10 +70,17 @@ struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
                             .edgesIgnoringSafeArea(.all)
                     }
                 })
+            .onAppear{
+                viewModel.fetchData()
+            }
         }
     }
 }
 
-#Preview {
-    SelectThemeView()
+struct SelectThemeView_Previews: PreviewProvider {
+    @State private var isShowingPopup = false
+    @Environment(\.dismiss) var dismiss
+    static var previews: some View {
+        SelectThemeView(viewModel: SelectThemeViewModel())
+    }
 }

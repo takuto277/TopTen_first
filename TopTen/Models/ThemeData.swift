@@ -7,18 +7,22 @@
 
 import Foundation
 
-struct ThemeData {
+// お題データ
+struct ThemeData: Decodable {
     let theme: Theme
-    let otherThemeAnswers: [Answers]
+    let otherThemeAnswers: [Answer]
 }
 
-struct Theme {
+// お題
+struct Theme: Decodable {
+    let id: String
     let theme: String
     let lowNumberTheme: String
     let highNumberTheme: String
 }
 
-struct Answers {
+/// 回答内容
+struct Answer: Decodable {
     let id: String
     let answer: String
     let number: String

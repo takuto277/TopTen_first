@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NumberPopupView: View {
     @Binding var isShowingPopup: Bool
-    @Binding var data: answerData
+    @Binding var data: userAnswerData
     @Binding  var selectedButtonIndex: Int?
     var body: some View {
         GeometryReader { geometry in
@@ -65,7 +65,7 @@ struct NumberPopupView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let data = answerData(
+        let data = userAnswerData(
             theme: "Example Theme",
             sentences: sentences(
                 sentence1: "Sentence 1",

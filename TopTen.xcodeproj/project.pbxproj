@@ -23,6 +23,7 @@
 		997423AC2B7BAC7C00B09C18 /* NumberPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */; };
 		999E9B442B811B4B00072912 /* SelectThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B432B811B4B00072912 /* SelectThemeViewModel.swift */; };
 		999E9B462B81207300072912 /* ThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B452B81207300072912 /* ThemeData.swift */; };
+		999E9B482B81DA5F00072912 /* InitTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 999E9B472B81DA5F00072912 /* InitTheme.json */; };
 		99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E27D3F2B7E62A800B739AA /* FeedbackView.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		997423AB2B7BAC7C00B09C18 /* NumberPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPopupView.swift; sourceTree = "<group>"; };
 		999E9B432B811B4B00072912 /* SelectThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectThemeViewModel.swift; sourceTree = "<group>"; };
 		999E9B452B81207300072912 /* ThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
+		999E9B472B81DA5F00072912 /* InitTheme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InitTheme.json; sourceTree = "<group>"; };
 		99E27D3F2B7E62A800B739AA /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				9974239C2B7A0CF900B09C18 /* Selima .otf */,
+				999E9B472B81DA5F00072912 /* InitTheme.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9974239D2B7A0CF900B09C18 /* Selima .otf in Resources */,
+				999E9B482B81DA5F00072912 /* InitTheme.json in Resources */,
 				9951AFE42B64EE2100C6CCAE /* Preview Assets.xcassets in Resources */,
 				9951AFE12B64EE2100C6CCAE /* Assets.xcassets in Resources */,
 			);
