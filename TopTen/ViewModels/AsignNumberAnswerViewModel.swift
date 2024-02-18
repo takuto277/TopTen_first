@@ -9,7 +9,7 @@ import Foundation
 
 final class AsignNumberAnswerViewModel: ObservableObject {
     @Published var themeData: ThemeData
-    @Published var randomNumber = 0
+    var randomNumber = 0
     
     init(themeData: ThemeData) {
         self.themeData = themeData

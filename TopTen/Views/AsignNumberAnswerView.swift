@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
-    @ObservedObject var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
     @State private var text: String = ""
     @Environment(\.dismiss) var dismiss
     
