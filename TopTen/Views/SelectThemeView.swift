@@ -36,7 +36,7 @@ struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
                 }
                 .padding()
                 List {
-                    ForEach(viewModel.data, id: \.theme.id) { element in
+                    ForEach(viewModel.data, id: \.id) { element in
                         NavigationLink {
                             AsignNumberAnswerView(viewModel: AsignNumberAnswerViewModel(themeData: element))
                                 .navigationBarBackButtonHidden(true)

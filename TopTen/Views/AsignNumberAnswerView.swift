@@ -144,8 +144,10 @@ struct AsignNumberAnswerView_Previews: PreviewProvider {
     @Environment(\.dismiss) var dismiss
     
     static let previewsThemeData = ThemeData(
+        id: "1",
         theme: Theme(id: "1", theme: "ゾンビの世界で生き残れる隠れ場所", lowNumberTheme: "生き残れない場所", highNumberTheme: "生き残れる場所"),
-        otherThemeAnswers: [Answer(id: "1", answer: "アンブレラ社", number: "9")])
+        otherThemeAnswers: [Answer(id: "1", answer: "アンブレラ社", number: "9")], 
+        myAnswer: nil)
     static var previews: some View {
         AsignNumberAnswerView(viewModel: AsignNumberAnswerViewModel(themeData: previewsThemeData))
     }

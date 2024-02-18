@@ -9,8 +9,10 @@ import Foundation
 
 // お題データ
 struct ThemeData: Decodable {
+    let id: String
     let theme: Theme
     let otherThemeAnswers: [Answer]
+    let myAnswer: MyAnswer?
 }
 
 // お題
@@ -23,6 +25,12 @@ struct Theme: Decodable {
 
 /// 回答内容
 struct Answer: Decodable {
+    let id: String
+    let answer: String
+    let number: String
+}
+
+struct MyAnswer: Decodable {
     let id: String
     let answer: String
     let number: String
