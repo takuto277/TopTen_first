@@ -12,7 +12,7 @@ struct ThemeData: Decodable {
     let id: String
     let theme: Theme
     let otherThemeAnswers: [Answer]
-    let myAnswer: MyAnswer?
+    var myAnswer: MyAnswer?
 }
 
 // お題

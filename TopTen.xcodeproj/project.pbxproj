@@ -26,6 +26,7 @@
 		999E9B482B81DA5F00072912 /* InitTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 999E9B472B81DA5F00072912 /* InitTheme.json */; };
 		999E9B4A2B81FD5900072912 /* AsignNumberAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B492B81FD5900072912 /* AsignNumberAnswerViewModel.swift */; };
 		999E9B4C2B8243C700072912 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B4B2B8243C700072912 /* ViewExtension.swift */; };
+		999E9B4E2B825BDC00072912 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B4D2B825BDC00072912 /* GameViewModel.swift */; };
 		99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E27D3F2B7E62A800B739AA /* FeedbackView.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		999E9B472B81DA5F00072912 /* InitTheme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InitTheme.json; sourceTree = "<group>"; };
 		999E9B492B81FD5900072912 /* AsignNumberAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsignNumberAnswerViewModel.swift; sourceTree = "<group>"; };
 		999E9B4B2B8243C700072912 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		999E9B4D2B825BDC00072912 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		99E27D3F2B7E62A800B739AA /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +206,7 @@
 			children = (
 				999E9B432B811B4B00072912 /* SelectThemeViewModel.swift */,
 				999E9B492B81FD5900072912 /* AsignNumberAnswerViewModel.swift */,
+				999E9B4D2B825BDC00072912 /* GameViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				9951AFDD2B64EE2000C6CCAE /* TopTenApp.swift in Sources */,
 				999E9B462B81207300072912 /* ThemeData.swift in Sources */,
 				99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */,
+				999E9B4E2B825BDC00072912 /* GameViewModel.swift in Sources */,
 				997423A32B7A75E400B09C18 /* PopupView.swift in Sources */,
 				997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */,
 				997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */,

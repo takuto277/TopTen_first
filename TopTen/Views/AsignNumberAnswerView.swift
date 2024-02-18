@@ -10,116 +10,125 @@ import SwiftUI
 struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
     @StateObject var viewModel: ViewModel
     @State private var text: String = ""
+    @State private var navigationFlg = false
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
-                VStack (spacing: 20){
-                    Text("お題と番号に沿った文章を作成してみよう！")
-                        .padding()
-                        .font(.headline)
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(.center)
-                        .background(Color.yellow.opacity(0.3))
-                        .cornerRadius(10)
-                    HStack {
-                        VStack(alignment: .leading, spacing: 10) {
-                            let data = viewModel.themeData.theme
-                            Group {
-                                Text("お題")
-                                    .foregroundColor(.black)
-                                    .font(.headline)
-                                    .padding(.horizontal, 10)
-                                VStack(alignment: .leading) {
-                                    Text(data.theme)
-                                        .font(.custom("STBaoliTC-Regular", size: 20))
-                                    Text(data.lowNumberTheme)
-                                        .foregroundColor(.red)
-                                    Text(data.highNumberTheme)
-                                        .foregroundColor(.green)
-                                }
-                                .foregroundColor(.black)
-                                .padding(.horizontal, 10)
-                            }
-                            .background(Color.white)
+            NavigationStack{
+                ScrollView {
+                    VStack (spacing: 20){
+                        Text("お題と番号に沿った文章を作成してみよう！")
+                            .padding()
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.center)
+                            .background(Color.yellow.opacity(0.3))
                             .cornerRadius(10)
-                            .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                        HStack {
+                            VStack(alignment: .leading, spacing: 10) {
+                                let data = viewModel.themeData.theme
+                                Group {
+                                    Text("お題")
+                                        .foregroundColor(.black)
+                                        .font(.headline)
+                                        .padding(.horizontal, 10)
+                                    VStack(alignment: .leading) {
+                                        Text(data.theme)
+                                            .font(.custom("STBaoliTC-Regular", size: 20))
+                                        Text(data.lowNumberTheme)
+                                            .foregroundColor(.red)
+                                        Text(data.highNumberTheme)
+                                            .foregroundColor(.green)
+                                    }
+                                    .foregroundColor(.black)
+                                    .padding(.horizontal, 10)
+                                }
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                            }
+                            
+                            Spacer()
+                            
+                            Text(String(viewModel.randomNumber))
+                                .font(.custom("STBaoliTC-Regular", size: 100))
+                                .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.2)
+                                .border(Color.black, width: 3)
+                                .background(Color(red: 1.0 - Double(viewModel.randomNumber) / 10.0, green: Double(viewModel.randomNumber) / 10.0, blue: 0))
+                                .cornerRadius(6)
                         }
+                        .padding()
+                        
+                        HStack {
+                            Image(systemName: "1.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.white)
+                                .frame(width: 20, height: 20)
+                                .background(.red)
+                                .clipShape(Circle())
+                            
+                            LinearGradient(gradient: Gradient(colors: [Color(red: 255/255, green: 0/255, blue: 0/255), Color(red: 1/255, green: 255/255, blue: 0/255)]), startPoint: .leading, endPoint: .trailing)
+                                .frame(height: 5)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                            
+                            Image(systemName: "10.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.white)
+                                .frame(width: 20, height: 20)
+                                .background(.green)
+                                .clipShape(Circle())
+                        }
+                        .padding()
+                        
+                        VStack {
+                            ZStack(alignment: .topLeading) {
+                                textEditor
+                                if text.isEmpty {
+                                    placeholderText
+                                }
+                            }
+                            HStack {
+                                Button {
+                                    dismiss()
+                                } label: {
+                                    Text("戻る")
+                                        .font(.custom("STBaoliTC-Regular", size: 15))
+                                        .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
+                                }
+                                .buttonStyle(BackButtonStyle())
+                                
+                                Button {
+                                    self.viewModel.setMyAnswer(answer: self.text)
+                                    self.navigationFlg = true
+                                    
+                                } label: {
+                                    Text("決定")
+                                        .font(.custom("STBaoliTC-Regular", size: 15))
+                                        .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
+                                }
+                                .buttonStyle(MyButtonStyle())
+                                
+                            }
+                            .padding()
+                            
+                        }
+                        .padding()
                         
                         Spacer()
-                        
-                        Text(String(viewModel.randomNumber))
-                            .font(.custom("STBaoliTC-Regular", size: 100))
-                            .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.2)
-                            .border(Color.black, width: 3)
-                            .background(Color(red: 1.0 - Double(viewModel.randomNumber) / 10.0, green: Double(viewModel.randomNumber) / 10.0, blue: 0))
-                            .cornerRadius(6)
                     }
-                    .padding()
-                    
-                    HStack {
-                        Image(systemName: "1.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.white)
-                            .frame(width: 20, height: 20)
-                            .background(.red)
-                            .clipShape(Circle())
-                        
-                        LinearGradient(gradient: Gradient(colors: [Color(red: 255/255, green: 0/255, blue: 0/255), Color(red: 1/255, green: 255/255, blue: 0/255)]), startPoint: .leading, endPoint: .trailing)
-                            .frame(height: 5)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                        
-                        Image(systemName: "10.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.white)
-                            .frame(width: 20, height: 20)
-                            .background(.green)
-                            .clipShape(Circle())
-                    }
-                    .padding()
-                    
-                    VStack {
-                        ZStack(alignment: .topLeading) {
-                            textEditor
-                            if text.isEmpty {
-                                placeholderText
-                            }
-                        }
-                        HStack {
-                            Button {
-                                dismiss()
-                            } label: {
-                                Text("戻る")
-                                    .font(.custom("STBaoliTC-Regular", size: 15))
-                                    .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
-                            }
-                            .buttonStyle(BackButtonStyle())
-                            
-                            NavigationLink {
-                                GameView()
-                                    .navigationBarBackButtonHidden(true)
-                            } label: {
-                                Text("決定")
-                                    .font(.custom("STBaoliTC-Regular", size: 15))
-                                    .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
-                            }
-                            .buttonStyle(MyButtonStyle())
-                        }
-                        .padding()
-                        
-                    }
-                    .padding()
-                    
-                    Spacer()
                 }
-            }
-            .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
-            .onTapGesture {
-                self.endEditing(true)
+                .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
+                .onTapGesture {
+                    self.endEditing(true)
+                }
+                .navigationDestination(isPresented: self.$navigationFlg) {
+                    GameView(viewModel: GameViewModel(themeData: self.viewModel.themeData))
+                        .navigationBarBackButtonHidden(true)
+                }
             }
         }
     }

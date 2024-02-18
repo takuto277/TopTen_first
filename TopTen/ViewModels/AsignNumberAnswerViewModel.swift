@@ -19,4 +19,9 @@ final class AsignNumberAnswerViewModel: ObservableObject {
     func generateRandomNumber() {
         self.randomNumber = Int.random(in: 1...10)
     }
+    
+    func setMyAnswer(answer: String) {
+        let myAnswer = MyAnswer(id: self.themeData.id, answer: answer, number: String(self.randomNumber))
+        self.themeData.myAnswer = myAnswer
+    }
 }

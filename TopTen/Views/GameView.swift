@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct GameView: View {
+struct GameView<ViewModel: GameViewModel>: View {
+    @ObservedObject var viewModel: ViewModel
     @State private var isShowingPopup = false
     @State private var data = userAnswerData(sentences: sentences(), answers: answers(), correctNumbers: correctNumbers())
     @State private var selectedButtonIndex: Int?
@@ -153,8 +154,18 @@ struct GameView: View {
     }
 }
 
-#Preview {
-    GameView()
+struct GameView_Previews: PreviewProvider {
+    @State private var text: String = ""
+    @Environment(\.dismiss) var dismiss
+    
+    static let previewsThemeData = ThemeData(
+        id: "1",
+        theme: Theme(id: "1", theme: "ゾンビの世界で生き残れる隠れ場所", lowNumberTheme: "生き残れない場所", highNumberTheme: "生き残れる場所"),
+        otherThemeAnswers: [Answer(id: "1", answer: "アンブレラ社", number: "9")],
+        myAnswer: MyAnswer(id: "1", answer: "これは私の回答で[病院]", number: "2"))
+    static var previews: some View {
+        GameView(viewModel: GameViewModel(themeData: previewsThemeData))
+    }
 }
 
 struct userAnswerData {
