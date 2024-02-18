@@ -38,7 +38,7 @@ struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
                 List {
                     ForEach(viewModel.data, id: \.theme.id) { element in
                         NavigationLink {
-                            AsignNumberAnswerView()
+                            AsignNumberAnswerView(viewModel: AsignNumberAnswerViewModel(themeData: element))
                                 .navigationBarBackButtonHidden(true)
                         } label: {
                             VStack(alignment: .leading) {

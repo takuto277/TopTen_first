@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-struct AsignNumberAnswerView: View {
-    @State private var randomNumber = Int.random(in: 1...10)
+struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
+    @ObservedObject var viewModel: ViewModel
     @State private var text: String = ""
-    @State private var isEditing = false
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -25,14 +24,22 @@ struct AsignNumberAnswerView: View {
                             .cornerRadius(10)
                 HStack {
                     VStack(alignment: .leading, spacing: 10) {
+                        let data = viewModel.themeData.theme
                         Group {
                             Text("お題")
                                 .foregroundColor(.black)
                                 .font(.headline)
                                 .padding(.horizontal, 10)
-                            Text("恋人にクリスマスプレゼントをもらう。もらっても嬉しくない。もらったら嬉しい。")
-                                .foregroundColor(.black)
-                                .padding(.horizontal, 10)
+                            VStack(alignment: .leading) {
+                                Text(data.theme)
+                                    .font(.custom("STBaoliTC-Regular", size: 20))
+                                Text(data.lowNumberTheme)
+                                    .foregroundColor(.red)
+                                Text(data.highNumberTheme)
+                                    .foregroundColor(.green)
+                            }
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 10)
                         }
                         .background(Color.white)
                         .cornerRadius(10)
@@ -41,11 +48,11 @@ struct AsignNumberAnswerView: View {
                     
                     Spacer()
                     
-                    Text(String(randomNumber))
+                    Text(String(viewModel.randomNumber))
                         .font(.custom("STBaoliTC-Regular", size: 100))
                         .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.2)
                         .border(Color.black, width: 3)
-                        .background(Color(red: 1.0 - Double(randomNumber) / 10.0, green: Double(randomNumber) / 10.0, blue: 0))
+                        .background(Color(red: 1.0 - Double(viewModel.randomNumber) / 10.0, green: Double(viewModel.randomNumber) / 10.0, blue: 0))
                         .cornerRadius(6)
                 }
                 .padding()
@@ -125,6 +132,14 @@ struct AsignNumberAnswerView: View {
     }
 }
 
-#Preview {
-    AsignNumberAnswerView()
+struct AsignNumberAnswerView_Previews: PreviewProvider {
+    @State private var text: String = ""
+    @Environment(\.dismiss) var dismiss
+    
+    static let previewsThemeData = ThemeData(
+        theme: Theme(id: "1", theme: "ゾンビの世界で生き残れる隠れ場所", lowNumberTheme: "生き残れない場所", highNumberTheme: "生き残れる場所"),
+        otherThemeAnswers: [Answer(id: "1", answer: "アンブレラ社", number: "9")])
+    static var previews: some View {
+        AsignNumberAnswerView(viewModel: AsignNumberAnswerViewModel(themeData: previewsThemeData))
+    }
 }
