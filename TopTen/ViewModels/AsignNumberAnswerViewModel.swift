@@ -21,7 +21,7 @@ final class AsignNumberAnswerViewModel: ObservableObject {
     }
     
     func setMyAnswer(answer: String) {
-        let myAnswer = MyAnswer(id: self.themeData.id, answer: answer, number: String(self.randomNumber))
+        let myAnswer = Answer(id: self.themeData.id, answer: answer, number: String(self.randomNumber))
         self.themeData.myAnswer = myAnswer
     }
 }

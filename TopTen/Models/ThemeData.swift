@@ -12,7 +12,7 @@ struct ThemeData: Decodable {
     let id: String
     let theme: Theme
     let otherThemeAnswers: [Answer]
-    var myAnswer: MyAnswer?
+    var myAnswer: Answer?
 }
 
 // お題
@@ -30,8 +30,8 @@ struct Answer: Decodable {
     let number: String
 }
 
-struct MyAnswer: Decodable {
-    let id: String
-    let answer: String
-    let number: String
+struct RankedAnswer {
+    let answer: Answer
+    let rank: Int
+    let myAnswerFlg: Bool
 }
