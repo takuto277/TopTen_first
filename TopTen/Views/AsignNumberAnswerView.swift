@@ -83,24 +83,12 @@ struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
                     .padding()
                     
                     VStack {
-                        
-                        TextEditor(text: $text)
-                            .padding()
-                            .frame(height: 150) // 高さを設定
-                            .background(Color.white.opacity(0.8))
-                            .cornerRadius(8.0)
-                            .border(Color.gray, width: 1)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray, lineWidth: 1)
-                            )
-                            .overlay(
-                                Text("例: \n[お題]「学校の七不思議にありそうなこと」 \n[順番]10番 \n[入力]トイレの花子さん")
-                                    .font(.custom("STBaoliTC-Regular", size: 15))
-                                    .foregroundColor(.gray)
-                                    .padding(.horizontal)
-                                    .opacity(text.isEmpty ? 1 : 0) // テキストが空でない場合は非表示にする
-                            )
+                        ZStack(alignment: .topLeading) {
+                            textEditor
+                            if text.isEmpty {
+                                placeholderText
+                            }
+                        }
                         HStack {
                             Button {
                                 dismiss()
@@ -130,7 +118,24 @@ struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
                 }
             }
             .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
+            .onTapGesture {
+                self.endEditing(true)
+            }
         }
+    }
+    
+    var placeholderText: some View {
+        Text("例: \n[お題]「学校の七不思議にありそうなこと」 \n[順番]10番 \n[入力]トイレの花子さん")
+            .foregroundColor(Color(uiColor: .placeholderText))
+            .padding(.vertical, 8)
+            .allowsHitTesting(false)
+    }
+    
+    var textEditor: some View {
+        TextEditor(text: $text)
+            .cornerRadius(10.0)
+            .padding(.horizontal, -4)
+            .frame(minHeight: 150)
     }
 }
 

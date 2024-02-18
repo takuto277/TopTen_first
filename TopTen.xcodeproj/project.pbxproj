@@ -25,6 +25,7 @@
 		999E9B462B81207300072912 /* ThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B452B81207300072912 /* ThemeData.swift */; };
 		999E9B482B81DA5F00072912 /* InitTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 999E9B472B81DA5F00072912 /* InitTheme.json */; };
 		999E9B4A2B81FD5900072912 /* AsignNumberAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B492B81FD5900072912 /* AsignNumberAnswerViewModel.swift */; };
+		999E9B4C2B8243C700072912 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999E9B4B2B8243C700072912 /* ViewExtension.swift */; };
 		99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E27D3F2B7E62A800B739AA /* FeedbackView.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		999E9B452B81207300072912 /* ThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
 		999E9B472B81DA5F00072912 /* InitTheme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InitTheme.json; sourceTree = "<group>"; };
 		999E9B492B81FD5900072912 /* AsignNumberAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsignNumberAnswerViewModel.swift; sourceTree = "<group>"; };
+		999E9B4B2B8243C700072912 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		99E27D3F2B7E62A800B739AA /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +218,7 @@
 		99E27D452B80583500B739AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				999E9B4B2B8243C700072912 /* ViewExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */,
 				997423A52B7A76B600B09C18 /* HelpTopic.swift in Sources */,
 				997423AA2B7BA4FB00B09C18 /* GameView.swift in Sources */,
+				999E9B4C2B8243C700072912 /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

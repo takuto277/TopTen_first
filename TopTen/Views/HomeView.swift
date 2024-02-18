@@ -50,6 +50,7 @@ struct HomeView: View {
                         .animation(
                             Animation.spring(duration: TimeInterval(3)),
                             value: !animationFinished)
+                        .allowsHitTesting(false)
                 )
             }
             .onAppear {
