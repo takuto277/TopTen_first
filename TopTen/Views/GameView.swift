@@ -182,7 +182,6 @@ struct GameView_Previews: PreviewProvider {
 }
 
 struct userAnswerData {
-    var theme: String = ""
     var answers: answers
     var correctNumbers: correctNumbers
     

@@ -66,13 +66,6 @@ struct NumberPopupView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let data = userAnswerData(
-            theme: "Example Theme",
-            sentences: sentences(
-                sentence1: "Sentence 1",
-                sentence2: "Sentence 2",
-                sentence3: "Sentence 3",
-                sentence4: "Sentence 4"
-            ),
             answers: answers(
                 answer1: "Answer 1",
                 answer2: "Answer 2",
