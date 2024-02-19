@@ -10,7 +10,7 @@ import SwiftUI
 struct GameView<ViewModel: GameViewModel>: View {
     @ObservedObject var viewModel: ViewModel
     @State private var isShowingPopup = false
-    @State private var data = userAnswerData(sentences: sentences(), answers: answers(), correctNumbers: correctNumbers())
+    @State private var data = userAnswerData(answers: answers(), correctNumbers: correctNumbers())
     @State private var selectedButtonIndex: Int?
     @State private var pushDecideButton = false
     @State private var showCorrectNumber = false
@@ -48,13 +48,12 @@ struct GameView<ViewModel: GameViewModel>: View {
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
-                    
-                    ForEach(1..<5) { index in
+                    ForEach(self.viewModel.rankedAnswer.indices, id: \.self) { index in
+                        let rankedAnswer = self.viewModel.rankedAnswer[index]
                         HStack {
                             Spacer()
                             
-                            //          Text(element.answer.answer)
-                            Text("hoge")
+                            Text(rankedAnswer.answer.answer)
                                 .foregroundColor(.black)
                                 .padding(.horizontal, 10)
                                 .background(Color.white)
@@ -71,20 +70,20 @@ struct GameView<ViewModel: GameViewModel>: View {
                                     .font(.custom("STBaoliTC-Regular", size: 50))
                                     .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
                                     .border(Color.black, width: 3)
-                                    .foregroundColor(Color(red: 1.0 - (Double(data.answerForButton(index)) ?? 0) / 5.0, green: (Double(data.answerForButton(index)) ?? 0) / 5.0, blue: 0))
+                                    .foregroundColor(Color(red: 1.0 - (Double(data.answerForButton(index)) ?? 0) / 4.0, green: (Double(data.answerForButton(index)) ?? 0) / 4.0, blue: 0))
                                     .cornerRadius(6)
                             }
                             .disabled(self.pushDecideButton)
                             .overlay{
-                                Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
-                                    .font(.custom("STBaoliTC-Regular", size: 90))
-                                    .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
-                                    .opacity(self.pushDecideButton ? 1 : 0)
-                                    .offset(y: self.pushDecideButton ?  0 :  -20)
-                                    .offset(x: self.pushDecideButton ? 0 : -25 )
-                                    .animation(
-                                        Animation.spring(duration: TimeInterval(1))
-                                            .delay(Double(index - 1) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
+                                    Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
+                                        .font(.custom("STBaoliTC-Regular", size: 90))
+                                        .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
+                                        .opacity(self.pushDecideButton ? 1 : 0)
+                                        .offset(y: self.pushDecideButton ?  0 :  -20)
+                                        .offset(x: self.pushDecideButton ? 0 : -25 )
+                                        .animation(
+                                            Animation.spring(duration: TimeInterval(1))
+                                                .delay(Double(index - 1) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
                             }
                             
                             if self.pushDecideButton {
@@ -106,6 +105,9 @@ struct GameView<ViewModel: GameViewModel>: View {
                             }
                             
                             Spacer()
+                        }
+                        .onAppear{
+                            self.data.setCorrectNumber(index: index, rank: String(rankedAnswer.rank))
                         }
                     }
                     .padding()
@@ -181,7 +183,6 @@ struct GameView_Previews: PreviewProvider {
 
 struct userAnswerData {
     var theme: String = ""
-    var sentences: sentences
     var answers: answers
     var correctNumbers: correctNumbers
     
@@ -212,13 +213,13 @@ struct userAnswerData {
     
     func answerForButton(_ index: Int) -> String {
         switch index {
-        case 1:
+        case 0:
             return answers.answer1
-        case 2:
+        case 1:
             return answers.answer2
-        case 3:
+        case 2:
             return answers.answer3
-        case 4:
+        case 3:
             return answers.answer4
         default:
             return ""
@@ -227,25 +228,33 @@ struct userAnswerData {
     
     func correctNumberForButton(_ index: Int) -> String {
         switch index {
-        case 1:
+        case 0:
             return correctNumbers.correctNumber1
-        case 2:
+        case 1:
             return correctNumbers.correctNumber2
-        case 3:
+        case 2:
             return correctNumbers.correctNumber3
-        case 4:
+        case 3:
             return correctNumbers.correctNumber4
         default:
             return ""
         }
     }
-}
-
-struct sentences {
-    var sentence1: String = ""
-    var sentence2: String = ""
-    var sentence3: String = ""
-    var sentence4: String = ""
+    
+    mutating func setCorrectNumber(index: Int, rank: String) {
+        switch index {
+        case 0:
+            self.correctNumbers.correctNumber1 = rank
+        case 1:
+            self.correctNumbers.correctNumber2 = rank
+        case 2:
+            self.correctNumbers.correctNumber3 = rank
+        case 3:
+            self.correctNumbers.correctNumber4 = rank
+        default: break
+            // ここには来ない
+        }
+    }
 }
 
 struct answers {
@@ -256,10 +265,10 @@ struct answers {
 }
 
 struct correctNumbers {
-    var correctNumber1: String = "1"
-    var correctNumber2: String = "2"
-    var correctNumber3: String = "3"
-    var correctNumber4: String = "4"
+    var correctNumber1: String = ""
+    var correctNumber2: String = ""
+    var correctNumber3: String = ""
+    var correctNumber4: String = ""
 }
 
 enum Correctness {

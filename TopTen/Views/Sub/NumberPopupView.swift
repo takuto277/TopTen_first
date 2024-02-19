@@ -20,13 +20,13 @@ struct NumberPopupView: View {
                             self.isShowingPopup = false
                             
                             switch self.selectedButtonIndex {
-                            case 1:
+                            case 0:
                                 self.data.answers.answer1 = "\(index)"
-                            case 2:
+                            case 1:
                                 self.data.answers.answer2 = "\(index)"
-                            case 3:
+                            case 2:
                                 self.data.answers.answer3 = "\(index)"
-                            case 4:
+                            case 3:
                                 self.data.answers.answer4 = "\(index)"
                             default:
                                 break

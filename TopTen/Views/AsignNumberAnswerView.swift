@@ -131,8 +131,10 @@ struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
                     self.endEditing(true)
                 }
                 .navigationDestination(isPresented: self.$navigationFlg) {
-                    GameView(viewModel: GameViewModel(themeData: self.viewModel.themeData))
-                        .navigationBarBackButtonHidden(true)
+                    if self.navigationFlg {
+                        GameView(viewModel: GameViewModel(themeData: self.viewModel.themeData))
+                            .navigationBarBackButtonHidden(true)
+                    }
                 }
                 .alert("注意", isPresented: $showingErrorAlert) {
                     

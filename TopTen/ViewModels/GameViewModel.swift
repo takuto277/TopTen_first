@@ -27,7 +27,7 @@ final class GameViewModel: ObservableObject {
             allAnswers.append(myAnswer)
         }
         
-        let sortedAnswers = randomAnswers.sorted { Int($0.number) ?? 0 < Int($1.number) ?? 0 }
+        let sortedAnswers = allAnswers.sorted { Int($0.number) ?? 0 < Int($1.number) ?? 0 }
         
         // 回答に順位を紐付ける
         self.rankedAnswer = sortedAnswers.enumerated().map { (index, answer) in
