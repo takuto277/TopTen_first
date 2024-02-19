@@ -79,6 +79,9 @@ struct FeedbackView: View {
                         
                         Button {
                             self.pushNextButton = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { // アニメーションのdurationに合わせて設定
+                                self.animationFinished = true
+                            }
                         } label: {
                             Text("次へ")
                                 .font(.headline)
@@ -103,16 +106,13 @@ struct FeedbackView: View {
                     .animation(
                         Animation.spring(duration: TimeInterval(3)),
                         value: self.pushNextButton)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { // アニメーションのdurationに合わせて設定
-                            self.animationFinished = true
-                        }
-                    }
             }
-            
-            // HomeViewへ遷移
-            NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true), isActive: self.$animationFinished) {
-                EmptyView()
+            .navigationDestination(isPresented: self.$animationFinished) {
+                if self.animationFinished {
+                    HomeView().navigationBarBackButtonHidden(true)
+                } else {
+                    EmptyView()
+                }
             }
         }
     }
