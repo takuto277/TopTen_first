@@ -25,8 +25,10 @@ struct HomeView: View {
                     Spacer(minLength:  geometry.size.height * 6/10)
                     
                     
-                    NavigationLink(destination: SelectThemeView(viewModel: SelectThemeViewModel())
-                        .navigationBarBackButtonHidden(true)) {
+                    NavigationLink(destination: {
+                        SelectThemeView(viewModel: SelectThemeViewModel())
+                            .navigationBarBackButtonHidden(true)
+                    }) {
                             Text("START")
                                 .padding()
                                 .font(.custom("STBaoliTC-Regular", size: 30))
