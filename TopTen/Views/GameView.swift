@@ -54,6 +54,7 @@ struct GameView<ViewModel: GameViewModel>: View {
                             Spacer()
                             
                             Text(rankedAnswer.answer.answer)
+                                .frame(width: self.showCorrectNumber ? geometry.size.width * 0.4 : geometry.size.width * 0.6)
                                 .foregroundColor(.black)
                                 .padding(.horizontal, 10)
                                 .background(Color.white)
@@ -79,11 +80,10 @@ struct GameView<ViewModel: GameViewModel>: View {
                                         .font(.custom("STBaoliTC-Regular", size: 90))
                                         .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
                                         .opacity(self.pushDecideButton ? 1 : 0)
-                                        .offset(y: self.pushDecideButton ?  0 :  -20)
-                                        .offset(x: self.pushDecideButton ? 0 : -25 )
+                                        .scaleEffect(self.pushDecideButton ? 1 : 4)
                                         .animation(
                                             Animation.spring(duration: TimeInterval(1))
-                                                .delay(Double(index - 1) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
+                                                .delay(Double(index) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
                             }
                             
                             if self.pushDecideButton {
