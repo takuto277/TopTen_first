@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+// 配列パスとして使う列挙型
+enum NavigationPath {
+    case pathHome, pathSelectTheme, pathAsignNumber, pathGame, pathFeedBack
+}
+
 struct HomeView: View {
+    @State private var navigationPath: [NavigationPath] = []
     @State private var isButtonVisible = true
     @State private var animationFinished = false
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $navigationPath) {
             GeometryReader { geometry in
                 VStack {
                     RainAnimationView()
@@ -24,23 +30,21 @@ struct HomeView: View {
                     
                     Spacer(minLength:  geometry.size.height * 6/10)
                     
-                    
-                    NavigationLink(destination: {
-                        SelectThemeView(viewModel: SelectThemeViewModel())
-                            .navigationBarBackButtonHidden(true)
-                    }) {
-                            Text("START")
-                                .padding()
-                                .font(.custom("STBaoliTC-Regular", size: 30))
-                                .frame(width: geometry.size.width * 0.7, height: geometry.size.height * 0.03)
-                                .opacity(isButtonVisible ? 1 : 0)
-                                .onAppear {
-                                    withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
-                                        isButtonVisible.toggle()
-                                    }
+                    Button {
+                        navigationPath.append(.pathSelectTheme)
+                    } label: {
+                        Text("START")
+                            .padding()
+                            .font(.custom("STBaoliTC-Regular", size: 30))
+                            .frame(width: geometry.size.width * 0.7, height: geometry.size.height * 0.03)
+                            .opacity(isButtonVisible ? 1 : 0)
+                            .onAppear {
+                                withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                                    isButtonVisible.toggle()
                                 }
-                        }
-                        .buttonStyle(MyButtonStyle())
+                            }
+                    }
+                    .buttonStyle(MyButtonStyle())
                     
                     
                     Spacer(minLength:  geometry.size.height * 1/10)
@@ -62,6 +66,12 @@ struct HomeView: View {
             }
             .onDisappear {
                 isButtonVisible = true
+            }
+            .navigationDestination(for: NavigationPath.self) { value in
+                if value == .pathSelectTheme {
+                    SelectThemeView(navigationPath: $navigationPath, viewModel: SelectThemeViewModel())
+                        .navigationBarBackButtonHidden(true)
+                }
             }
         }
     }
