@@ -14,7 +14,7 @@ enum NavigationPath: Hashable {
     case pathSelectTheme
     case pathAsignNumber(ThemeData)
     case pathGame(ThemeData)
-    case pathFeedBack
+    case pathFeedBack(ThemeData)
 }
 
 struct HomeView: View {
@@ -86,8 +86,8 @@ struct HomeView: View {
                 case .pathGame(let themeData):
                     GameView(navigationPath: $navigationPath, viewModel: GameViewModel(themeData: themeData))
                         .navigationBarBackButtonHidden(true)
-                case .pathFeedBack:
-                    FeedbackView(navigationPath: $navigationPath)
+                case .pathFeedBack(let themeData):
+                    FeedbackView(navigationPath: $navigationPath, viewModel: FeedbackViewModel(themeData: themeData))
                         .navigationBarBackButtonHidden(true)
                 }
             }

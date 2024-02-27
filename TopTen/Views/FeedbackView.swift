@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct FeedbackView: View {
+struct FeedbackView<ViewModel: FeedbackViewModel>: View {
     @Binding var navigationPath: [NavigationPath]
     let randomNumber = Int.random(in: 1...10)
+    @ObservedObject var viewModel: ViewModel
     @State private var text: String = ""
     @State private var isEditing = false
     @State private var pushNextButton = false
@@ -100,6 +101,9 @@ struct FeedbackView: View {
                         Animation.spring(duration: TimeInterval(3)),
                         value: self.pushNextButton)
             }
+            .onTapGesture {
+                self.endEditing(true)
+            }
         }
     }
     
@@ -120,9 +124,15 @@ struct FeedbackView: View {
 }
 
 struct Feedback_Previews: PreviewProvider {
-
+    static let previewsThemeData = ThemeData(
+        id: "1",
+        theme: Theme(id: "1", theme: "ゾンビの世界で生き残れる隠れ場所", lowNumberTheme: "生き残れない場所", highNumberTheme: "生き残れる場所"),
+        otherThemeAnswers: [Answer(id: "1", answer: "アンブレラ社", number: "9"),
+                            Answer(id: "1", answer: "空き家", number: "4"),
+                            Answer(id: "1", answer: "研究室", number: "3")],
+        myAnswer: Answer(id: "1", answer: "これは私の回答で[病院]", number: "2"))
     static var previews: some View {
         @State var navigationPath: [NavigationPath] = []
-        FeedbackView(navigationPath: $navigationPath)
+        FeedbackView(navigationPath: $navigationPath, viewModel: FeedbackViewModel(themeData: previewsThemeData))
     }
 }

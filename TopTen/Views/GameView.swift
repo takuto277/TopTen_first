@@ -131,7 +131,7 @@ struct GameView<ViewModel: GameViewModel>: View {
                     if self.pushDecideButton && self.animationFinished {
                         
                         Button {
-                            navigationPath.append(.pathFeedBack)
+                            navigationPath.append(.pathFeedBack(self.viewModel.themeData))
                         } label: {
                             Text("次へ→")
                                 .font(.custom("STBaoliTC-Regular", size: 15))

@@ -13,6 +13,7 @@
 		9951AFEE2B64EE2200C6CCAE /* TopTenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFED2B64EE2200C6CCAE /* TopTenTests.swift */; };
 		9951AFF82B64EE2200C6CCAE /* TopTenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFF72B64EE2200C6CCAE /* TopTenUITests.swift */; };
 		9951AFFA2B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */; };
+		9956C9162B8E418C00C08ABF /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956C9152B8E418C00C08ABF /* FeedbackViewModel.swift */; };
 		9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9974233B2B78D3ED00B09C18 /* HomeView.swift */; };
 		9974239D2B7A0CF900B09C18 /* Selima .otf in Resources */ = {isa = PBXBuildFile; fileRef = 9974239C2B7A0CF900B09C18 /* Selima .otf */; };
 		997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A02B7A1A2300B09C18 /* SelectThemeView.swift */; };
@@ -57,6 +58,7 @@
 		9951AFF32B64EE2200C6CCAE /* TopTenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopTenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9951AFF72B64EE2200C6CCAE /* TopTenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenUITests.swift; sourceTree = "<group>"; };
 		9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9956C9152B8E418C00C08ABF /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
 		9974233B2B78D3ED00B09C18 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9974239C2B7A0CF900B09C18 /* Selima .otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Selima .otf"; sourceTree = "<group>"; };
 		9974239F2B7A106100B09C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				999E9B432B811B4B00072912 /* SelectThemeViewModel.swift */,
 				999E9B492B81FD5900072912 /* AsignNumberAnswerViewModel.swift */,
 				999E9B4D2B825BDC00072912 /* GameViewModel.swift */,
+				9956C9152B8E418C00C08ABF /* FeedbackViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */,
 				999E9B4E2B825BDC00072912 /* GameViewModel.swift in Sources */,
 				997423A32B7A75E400B09C18 /* PopupView.swift in Sources */,
+				9956C9162B8E418C00C08ABF /* FeedbackViewModel.swift in Sources */,
 				997423A82B7A7C6300B09C18 /* AsignNumberAnswerView.swift in Sources */,
 				997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */,
 				9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */,
