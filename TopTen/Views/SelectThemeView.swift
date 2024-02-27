@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
+    @Binding var navigationPath: [NavigationPath]
     @ObservedObject var viewModel: ViewModel
     @State private var isShowingPopup = false
     @Environment(\.dismiss) var dismiss
@@ -37,10 +38,9 @@ struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
                 .padding()
                 List {
                     ForEach(viewModel.data, id: \.id) { element in
-                        NavigationLink(destination: {
-                            AsignNumberAnswerView(viewModel: AsignNumberAnswerViewModel(themeData: element))
-                                .navigationBarBackButtonHidden(true)
-                        }) {
+                        Button {
+                            navigationPath.append(.pathAsignNumber(element))
+                        } label: {
                             VStack(alignment: .leading) {
                                 Text(element.theme.theme)
                                 Text(element.theme.lowNumberTheme)
@@ -48,7 +48,6 @@ struct SelectThemeView<ViewModel: SelectThemeViewModel>: View {
                                 Text(element.theme.highNumberTheme)
                                     .foregroundColor(.green)
                             }
-                            
                         }
                     }
                 }
@@ -81,6 +80,7 @@ struct SelectThemeView_Previews: PreviewProvider {
     @State private var isShowingPopup = false
     @Environment(\.dismiss) var dismiss
     static var previews: some View {
-        SelectThemeView(viewModel: SelectThemeViewModel())
+        @State var navigationPath: [NavigationPath] = []
+        SelectThemeView(navigationPath: $navigationPath, viewModel: SelectThemeViewModel())
     }
 }

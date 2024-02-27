@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameView<ViewModel: GameViewModel>: View {
+    @Binding var navigationPath: [NavigationPath]
     @ObservedObject var viewModel: ViewModel
     @State private var isShowingPopup = false
     @State private var data = userAnswerData(answers: answers(), correctNumbers: correctNumbers())
@@ -76,14 +77,14 @@ struct GameView<ViewModel: GameViewModel>: View {
                             }
                             .disabled(self.pushDecideButton)
                             .overlay{
-                                    Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
-                                        .font(.custom("STBaoliTC-Regular", size: 90))
-                                        .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
-                                        .opacity(self.pushDecideButton ? 1 : 0)
-                                        .scaleEffect(self.pushDecideButton ? 1 : 4)
-                                        .animation(
-                                            Animation.spring(duration: TimeInterval(1))
-                                                .delay(Double(index) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
+                                Image(systemName: data.judgeCorrectness(index) == Correctness.correct ? "circle" : "xmark")
+                                    .font(.custom("STBaoliTC-Regular", size: 90))
+                                    .foregroundColor(data.judgeCorrectness(index) == Correctness.correct ? .green : .red)
+                                    .opacity(self.pushDecideButton ? 1 : 0)
+                                    .scaleEffect(self.pushDecideButton ? 1 : 4)
+                                    .animation(
+                                        Animation.spring(duration: TimeInterval(1))
+                                            .delay(Double(index) * 1), value: self.pushDecideButton) // インデックスごとに遅延を設定
                             }
                             
                             if self.pushDecideButton {
@@ -129,9 +130,8 @@ struct GameView<ViewModel: GameViewModel>: View {
                     Spacer()
                     if self.pushDecideButton && self.animationFinished {
                         
-                        NavigationLink {
-                            FeedbackView()
-                                .navigationBarBackButtonHidden(true)
+                        Button {
+                            navigationPath.append(.pathFeedBack)
                         } label: {
                             Text("次へ→")
                                 .font(.custom("STBaoliTC-Regular", size: 15))
@@ -177,7 +177,8 @@ struct GameView_Previews: PreviewProvider {
                             Answer(id: "1", answer: "研究室", number: "3")],
         myAnswer: Answer(id: "1", answer: "これは私の回答で[病院]", number: "2"))
     static var previews: some View {
-        GameView(viewModel: GameViewModel(themeData: previewsThemeData))
+        @State var navigationPath: [NavigationPath] = []
+        GameView(navigationPath: $navigationPath, viewModel: GameViewModel(themeData: previewsThemeData))
     }
 }
 

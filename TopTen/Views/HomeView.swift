@@ -8,8 +8,13 @@
 import SwiftUI
 
 // 配列パスとして使う列挙型
-enum NavigationPath {
-    case pathHome, pathSelectTheme, pathAsignNumber, pathGame, pathFeedBack
+enum NavigationPath: Hashable {
+    
+    case pathHome
+    case pathSelectTheme
+    case pathAsignNumber(ThemeData)
+    case pathGame(ThemeData)
+    case pathFeedBack
 }
 
 struct HomeView: View {
@@ -66,10 +71,23 @@ struct HomeView: View {
             }
             .onDisappear {
                 isButtonVisible = true
+                self.animationFinished = false
             }
             .navigationDestination(for: NavigationPath.self) { value in
-                if value == .pathSelectTheme {
+                switch value {
+                case .pathHome:
+                    HomeView()
+                case .pathSelectTheme:
                     SelectThemeView(navigationPath: $navigationPath, viewModel: SelectThemeViewModel())
+                        .navigationBarBackButtonHidden(true)
+                case .pathAsignNumber(let themeData):
+                    AsignNumberAnswerView(navigationPath: $navigationPath, viewModel: AsignNumberAnswerViewModel(themeData: themeData))
+                        .navigationBarBackButtonHidden(true)
+                case .pathGame(let themeData):
+                    GameView(navigationPath: $navigationPath, viewModel: GameViewModel(themeData: themeData))
+                        .navigationBarBackButtonHidden(true)
+                case .pathFeedBack:
+                    FeedbackView(navigationPath: $navigationPath)
                         .navigationBarBackButtonHidden(true)
                 }
             }

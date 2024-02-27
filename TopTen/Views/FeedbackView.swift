@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FeedbackView: View {
+    @Binding var navigationPath: [NavigationPath]
     let randomNumber = Int.random(in: 1...10)
     @State private var text: String = ""
     @State private var isEditing = false
     @State private var pushNextButton = false
-    @State private var animationFinished = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -80,7 +80,7 @@ struct FeedbackView: View {
                         Button {
                             self.pushNextButton = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { // アニメーションのdurationに合わせて設定
-                                self.animationFinished = true
+                                navigationPath.removeAll()
                             }
                         } label: {
                             Text("次へ")
@@ -107,17 +107,14 @@ struct FeedbackView: View {
                         Animation.spring(duration: TimeInterval(3)),
                         value: self.pushNextButton)
             }
-            .navigationDestination(isPresented: self.$animationFinished) {
-                if self.animationFinished {
-                    HomeView().navigationBarBackButtonHidden(true)
-                } else {
-                    EmptyView()
-                }
-            }
         }
     }
 }
 
-#Preview {
-    FeedbackView()
+struct Feedback_Previews: PreviewProvider {
+
+    static var previews: some View {
+        @State var navigationPath: [NavigationPath] = []
+        FeedbackView(navigationPath: $navigationPath)
+    }
 }

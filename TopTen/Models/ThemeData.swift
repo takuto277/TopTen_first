@@ -8,7 +8,7 @@
 import Foundation
 
 // お題データ
-struct ThemeData: Decodable {
+struct ThemeData: Decodable, Hashable {
     let id: String
     let theme: Theme
     let otherThemeAnswers: [Answer]
@@ -16,7 +16,7 @@ struct ThemeData: Decodable {
 }
 
 // お題
-struct Theme: Decodable {
+struct Theme: Decodable, Hashable {
     let id: String
     let theme: String
     let lowNumberTheme: String
@@ -24,7 +24,7 @@ struct Theme: Decodable {
 }
 
 /// 回答内容
-struct Answer: Decodable {
+struct Answer: Decodable, Hashable {
     let id: String
     let answer: String
     let number: String
