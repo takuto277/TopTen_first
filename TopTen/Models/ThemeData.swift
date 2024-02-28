@@ -28,7 +28,7 @@ struct Answer: Decodable, Hashable {
     let id: String
     let answer: String
     let number: String
-    let reason: String?
+    var reason: String?
 }
 
 struct RankedAnswer {

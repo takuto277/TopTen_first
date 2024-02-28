@@ -13,4 +13,10 @@ final class FeedbackViewModel: ObservableObject {
     init(themeData: ThemeData) {
         self.themeData = themeData
     }
+    
+    func setReason(text: String?) {
+        if let text = text, !text.isEmpty {
+            self.themeData.myAnswer?.reason = text
+        }
+    }
 }

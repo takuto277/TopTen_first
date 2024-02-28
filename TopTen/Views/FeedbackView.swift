@@ -60,14 +60,15 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                                     .padding(.horizontal, 10)
                                     .frame(width: geometry.size.width * 0.7)
                                     .frame(minWidth: geometry.size.width * 0.7, minHeight: geometry.size.height * 0.1, alignment: .center)
-                                
-                                Text(myAnswer.id)
-                                    .font(.custom("STBaoliTC-Regular", size: 50))
-                                    .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
-                                    .background(Color(red: 1.0 - Double(randomNumber) / 10.0, green: Double(randomNumber) / 10.0, blue: 0))
-                                    .cornerRadius(6)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 10)
+                                if let answerNumber = Int(myAnswer.number) {
+                                    Text(myAnswer.number)
+                                        .font(.custom("STBaoliTC-Regular", size: 50))
+                                        .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
+                                        .background(Color(red: 1.0 - Double(answerNumber) / 10.0, green: Double(answerNumber) / 10.0, blue: 0))
+                                        .cornerRadius(6)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 10)
+                                }
                             }
                         }
                     }
@@ -84,6 +85,7 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                         
                         
                         Button {
+                            self.viewModel.setReason(text: self.text)
                             self.pushNextButton = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // アニメーションのdurationに合わせて設定
                                 navigationPath.removeAll()
