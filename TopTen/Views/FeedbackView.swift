@@ -86,7 +86,7 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                         
                         Button {
                             self.pushNextButton = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { // アニメーションのdurationに合わせて設定
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // アニメーションのdurationに合わせて設定
                                 navigationPath.removeAll()
                             }
                         } label: {

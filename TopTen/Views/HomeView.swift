@@ -65,7 +65,7 @@ struct HomeView: View {
                 )
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { // アニメーションのdurationに合わせて設定
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // アニメーションのdurationに合わせて設定
                     self.animationFinished = true
                 }
             }
