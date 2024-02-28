@@ -16,6 +16,8 @@ struct GameView<ViewModel: GameViewModel>: View {
     @State private var pushDecideButton = false
     @State private var showCorrectNumber = false
     @State private var animationFinished = false
+    @State private var isPressed = false
+    @State private var pressedIndex = 0
     
     var body: some View {
         GeometryReader { geometry in
@@ -61,6 +63,35 @@ struct GameView<ViewModel: GameViewModel>: View {
                                 .background(Color.white)
                                 .cornerRadius(10)
                                 .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                                .gesture(
+                                    DragGesture(minimumDistance: 0)
+                                        .onChanged { _ in
+                                            self.isPressed = true
+                                            self.pressedIndex = index
+                                        }
+                                        .onEnded { _ in
+                                            self.isPressed = false
+                                        }
+                                )
+                                .overlay(
+                                    Group {
+                                        if self.pressedIndex == index && self.isPressed && self.animationFinished {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .fill(Color.yellow)
+                                                    .frame(minWidth: geometry.size.width * 0.5, minHeight: geometry.size.height * 0.2)
+                                                    .lineLimit(5)
+                                                Text(rankedAnswer.answer.reason ?? "理由記載なし")
+                                                    .foregroundColor(.black)
+                                                    .padding()
+                                            }
+                                            .padding()
+                                            .offset(y: -100)
+                                        }
+                                    }
+                                )
+                                .zIndex(self.pressedIndex == index ? 1 : 0)
+                            
                             
                             Spacer()
                             
