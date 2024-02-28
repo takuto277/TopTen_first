@@ -75,14 +75,13 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
                     Group {
-
-                            ZStack(alignment: .topLeading) {
-                                textEditor
-                                if text.isEmpty {
-                                    placeholderText
-                                }
+                        ZStack(alignment: .topLeading) {
+                            textEditor
+                            if text.isEmpty {
+                                placeholderText
                             }
-
+                        }
+                        
                         
                         Button {
                             self.pushNextButton = true
@@ -92,12 +91,10 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                         } label: {
                             Text("次へ")
                                 .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.05)
-                                .background(Color.blue)
-                                .cornerRadius(10)
+                                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.02)
                                 .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
                         }
+                        .buttonStyle(MyButtonStyle())
                     }
                     .padding(.horizontal, 10)
                 }

@@ -164,11 +164,11 @@ struct GameView<ViewModel: GameViewModel>: View {
                         Button {
                             navigationPath.append(.pathFeedBack(self.viewModel.themeData))
                         } label: {
-                            Text("次へ→")
+                            Text("次へ")
                                 .font(.custom("STBaoliTC-Regular", size: 15))
                                 .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.02)
                         }
-                        .buttonStyle(NextButtonStyle())
+                        .buttonStyle(MyButtonStyle())
                     } else if !self.pushDecideButton {
                         Button {
                             self.pushDecideButton = true
