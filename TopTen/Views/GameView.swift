@@ -172,10 +172,10 @@ struct GameView_Previews: PreviewProvider {
     static let previewsThemeData = ThemeData(
         id: "1",
         theme: Theme(id: "1", theme: "ゾンビの世界で生き残れる隠れ場所", lowNumberTheme: "生き残れない場所", highNumberTheme: "生き残れる場所"),
-        otherThemeAnswers: [Answer(id: "1", answer: "アンブレラ社", number: "9"),
-                            Answer(id: "1", answer: "空き家", number: "4"),
-                            Answer(id: "1", answer: "研究室", number: "3")],
-        myAnswer: Answer(id: "1", answer: "これは私の回答で[病院]", number: "2"))
+        otherThemeAnswers: [Answer(id: "1", answer: "アンブレラ社", number: "9", reason: nil),
+                            Answer(id: "1", answer: "空き家", number: "4", reason: nil),
+                            Answer(id: "1", answer: "研究室", number: "3", reason: nil)],
+        myAnswer: Answer(id: "1", answer: "これは私の回答で[病院]", number: "2", reason: nil))
     static var previews: some View {
         @State var navigationPath: [NavigationPath] = []
         GameView(navigationPath: $navigationPath, viewModel: GameViewModel(themeData: previewsThemeData))
