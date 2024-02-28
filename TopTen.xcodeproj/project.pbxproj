@@ -14,6 +14,8 @@
 		9951AFF82B64EE2200C6CCAE /* TopTenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFF72B64EE2200C6CCAE /* TopTenUITests.swift */; };
 		9951AFFA2B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */; };
 		9956C9162B8E418C00C08ABF /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956C9152B8E418C00C08ABF /* FeedbackViewModel.swift */; };
+		9956C9182B8FA5E400C08ABF /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956C9172B8FA5E400C08ABF /* DatabaseService.swift */; };
+		9956C91B2B8FA68000C08ABF /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = 9956C91A2B8FA68000C08ABF /* FMDB */; };
 		9974233C2B78D3ED00B09C18 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9974233B2B78D3ED00B09C18 /* HomeView.swift */; };
 		9974239D2B7A0CF900B09C18 /* Selima .otf in Resources */ = {isa = PBXBuildFile; fileRef = 9974239C2B7A0CF900B09C18 /* Selima .otf */; };
 		997423A12B7A1A2400B09C18 /* SelectThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997423A02B7A1A2300B09C18 /* SelectThemeView.swift */; };
@@ -59,6 +61,7 @@
 		9951AFF72B64EE2200C6CCAE /* TopTenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenUITests.swift; sourceTree = "<group>"; };
 		9951AFF92B64EE2200C6CCAE /* TopTenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9956C9152B8E418C00C08ABF /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
+		9956C9172B8FA5E400C08ABF /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		9974233B2B78D3ED00B09C18 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9974239C2B7A0CF900B09C18 /* Selima .otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Selima .otf"; sourceTree = "<group>"; };
 		9974239F2B7A106100B09C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9956C91B2B8FA68000C08ABF /* FMDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +221,7 @@
 		99E27D442B80581700B739AA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9956C9172B8FA5E400C08ABF /* DatabaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -254,6 +259,9 @@
 			dependencies = (
 			);
 			name = TopTen;
+			packageProductDependencies = (
+				9956C91A2B8FA68000C08ABF /* FMDB */,
+			);
 			productName = TopTen;
 			productReference = 9951AFD92B64EE2000C6CCAE /* TopTen.app */;
 			productType = "com.apple.product-type.application";
@@ -326,6 +334,9 @@
 				Base,
 			);
 			mainGroup = 9951AFD02B64EE2000C6CCAE;
+			packageReferences = (
+				9956C9192B8FA68000C08ABF /* XCRemoteSwiftPackageReference "fmdb" */,
+			);
 			productRefGroup = 9951AFDA2B64EE2000C6CCAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -376,6 +387,7 @@
 				9951AFDD2B64EE2000C6CCAE /* TopTenApp.swift in Sources */,
 				999E9B462B81207300072912 /* ThemeData.swift in Sources */,
 				99E27D402B7E62A900B739AA /* FeedbackView.swift in Sources */,
+				9956C9182B8FA5E400C08ABF /* DatabaseService.swift in Sources */,
 				999E9B4E2B825BDC00072912 /* GameViewModel.swift in Sources */,
 				997423A32B7A75E400B09C18 /* PopupView.swift in Sources */,
 				9956C9162B8E418C00C08ABF /* FeedbackViewModel.swift in Sources */,
@@ -712,6 +724,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9956C9192B8FA68000C08ABF /* XCRemoteSwiftPackageReference "fmdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ccgus/fmdb";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9956C91A2B8FA68000C08ABF /* FMDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9956C9192B8FA68000C08ABF /* XCRemoteSwiftPackageReference "fmdb" */;
+			productName = FMDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9951AFD12B64EE2000C6CCAE /* Project object */;
 }
