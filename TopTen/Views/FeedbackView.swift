@@ -33,7 +33,7 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                             .foregroundColor(.black)
                             .font(.headline)
                             .padding(.horizontal, 10)
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .center) {
                             Text(data.theme)
                                 .font(.custom("STBaoliTC-Regular", size: 20))
                             Text(data.lowNumberTheme)
@@ -41,6 +41,7 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                             Text(data.highNumberTheme)
                                 .foregroundColor(.green)
                         }
+                        .frame(width: geometry.size.width * 0.9)
                     }
                     .background(Color.white)
                     .cornerRadius(10)
@@ -51,17 +52,23 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                             .foregroundColor(.black)
                             .font(.headline)
                             .padding(.horizontal, 10)
-                        HStack {
-                            Text("彼氏が高校生の頃から貯金して貯めたお金で買った財布")
-                                .foregroundColor(.black)
-                                .padding(.horizontal, 10)
-                            Text(String(randomNumber))
-                                .font(.custom("STBaoliTC-Regular", size: 50))
-                                .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
-                                .background(Color(red: 1.0 - Double(randomNumber) / 10.0, green: Double(randomNumber) / 10.0, blue: 0))
-                                .cornerRadius(6)
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 10)
+                        
+                        if let myAnswer = viewModel.themeData.myAnswer {
+                            HStack {
+                                Text(myAnswer.answer)
+                                    .foregroundColor(.black)
+                                    .padding(.horizontal, 10)
+                                    .frame(width: geometry.size.width * 0.7)
+                                    .frame(minWidth: geometry.size.width * 0.7, minHeight: geometry.size.height * 0.1, alignment: .center)
+                                
+                                Text(myAnswer.id)
+                                    .font(.custom("STBaoliTC-Regular", size: 50))
+                                    .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.1)
+                                    .background(Color(red: 1.0 - Double(randomNumber) / 10.0, green: Double(randomNumber) / 10.0, blue: 0))
+                                    .cornerRadius(6)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 10)
+                            }
                         }
                     }
                     .background(Color.white)
