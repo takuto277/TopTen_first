@@ -27,14 +27,20 @@ struct FeedbackView<ViewModel: FeedbackViewModel>: View {
                     .cornerRadius(10)
                 
                 VStack(alignment: .leading, spacing: 10) {
+                    let data = viewModel.themeData.theme
                     Group {
                         Text("お題")
                             .foregroundColor(.black)
                             .font(.headline)
                             .padding(.horizontal, 10)
-                        Text("恋人にクリスマスプレゼントをもらう。もらっても嬉しくない。もらったら嬉しい。")
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 10)
+                        VStack(alignment: .leading) {
+                            Text(data.theme)
+                                .font(.custom("STBaoliTC-Regular", size: 20))
+                            Text(data.lowNumberTheme)
+                                .foregroundColor(.red)
+                            Text(data.highNumberTheme)
+                                .foregroundColor(.green)
+                        }
                     }
                     .background(Color.white)
                     .cornerRadius(10)

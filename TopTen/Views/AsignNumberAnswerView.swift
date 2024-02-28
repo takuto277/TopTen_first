@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AsignNumberAnswerView<ViewModel: AsignNumberAnswerViewModel>: View {
     @Binding var navigationPath: [NavigationPath]
-    @StateObject var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel
     @State private var text: String = ""
     @State private var showingErrorAlert = false
     @State private var showingConfirmAlert = false
